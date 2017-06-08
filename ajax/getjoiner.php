@@ -1,6 +1,6 @@
 <?php
 // 定義関数の読み込み
-require 'function.php';
+require '../function.php';
 
 //line api sdk 読み込み
 require_once '../vendor/autoload.php';

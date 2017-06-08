@@ -51,7 +51,7 @@ if($type == 'follow'){
         if(empty($row)){
             $message = '承認コードが一致しませんでした';
         }else {
-            $sql = 'UPDATE users SET line_id=null, line_id=:line_id WHERE id=:id';
+            $sql = 'UPDATE users SET line_code=null, line_id=:line_id WHERE id=:id';
             $data = array(
                 ':line_id' => $userId,
                 ':id' => $row[0]['id']

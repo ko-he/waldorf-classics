@@ -1,8 +1,8 @@
 <?php
 ob_start();
 session_start();
-require_once('class/User.class.php');
-require_once('functions.php');
+require_once('../class/User.class.php');
+require_once('../functions.php');
 
 
 if(!empty($_POST)){

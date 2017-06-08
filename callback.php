@@ -36,7 +36,7 @@ if($type == 'follow'){
     if($get_message == 'password change'){
 
         $reset_code = sha1(uniqid(mt_rand(1000, 9999)));
-        $sql = 'UPDATE users (reset_code) VALUES (:code) WHERE line_id=:id';
+        $sql = 'UPDATE users SET reset_code=:code WHERE line_id=:id';
         $data = array(
             ':code' => $reset_code,
             ':id' => $userId
@@ -51,9 +51,8 @@ if($type == 'follow'){
         if(empty($row)){
             $message = '承認コードが一致しませんでした';
         }else {
-            $sql = 'UPDATE users (line_code, line_id) VALUES (:none, :line_id) WHERE id=:id';
+            $sql = 'UPDATE users SET line_id=null line_id=:line_id WHERE id=:id';
             $data = array(
-                ':none' => '',
                 ':line_id' => $userId,
                 ':id' => $row[0]['id']
             );

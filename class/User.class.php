@@ -34,8 +34,8 @@ class User extends Validate{
         }
     }
     public function insertUser($name, $email, $password){
-        for($i=0; $i>6; $i++){
-            @$code .= mt_rand();
+        for($i=0; $i<6; $i++){
+            @$code .= mt_rand(0, 9);
         }
         $sql = 'INSERT INTO users (name, email, password, line_code, created_at, updated_at) values (:name, :email, :password, :code, NOW(), NOW())';
         $data = array(

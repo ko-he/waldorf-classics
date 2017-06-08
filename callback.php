@@ -51,7 +51,7 @@ if($type == 'follow'){
         if(empty($row)){
             $message = '承認コードが一致しませんでした';
         }else {
-            $sql = 'UPDATE line_coin_users (line_code, line_id) VALUES (:none, :line_id) WHERE id=:id';
+            $sql = 'UPDATE users (line_code, line_id) VALUES (:none, :line_id) WHERE id=:id';
             $data = array(
                 ':none' => '',
                 ':line_id' => $userId,

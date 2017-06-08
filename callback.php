@@ -36,7 +36,7 @@ if($type == 'follow'){
     if($get_message == 'password change'){
 
         $reset_code = sha1(uniqid(mt_rand(1000, 9999)));
-        $sql = 'UPDATE users SET code=:code WHERE line_id=:id';
+        $sql = 'UPDATE users (reset_code) VALUES (:code) WHERE line_id=:id';
         $data = array(
             ':code' => $reset_code,
             ':id' => $userId
@@ -44,14 +44,14 @@ if($type == 'follow'){
         $db->queryPost($sql, $data);
             $message = "Password 変更画面 URL：https://waldorf-classics.herokuapp.com/auth/resetpassword.php?code=".$reset_code;
     }elseif(strlen($get_message) == 6){
-        $sql = 'SELECT * FROM users WHERE code=:code';
+        $sql = 'SELECT * FROM users WHERE line_code=:code';
         $data = array(':code' => $get_message);
         $recode = $db->queryPost($sql, $data);
         $row = $db->dbFetch($recode);
         if(empty($row)){
             $message = '承認コードが一致しませんでした';
         }else {
-            $sql = 'UPDATE line_coin_users SET line_id=:line_id, status=1, code=:none WHERE id=:id';
+            $sql = 'UPDATE line_coin_users (line_code, line_id) VALUES (:none, :line_id) WHERE id=:id';
             $data = array(
                 ':none' => '',
                 ':line_id' => $userId,

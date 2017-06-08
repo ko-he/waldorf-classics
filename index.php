@@ -1,1 +1,6 @@
-<?php echo "Hello world"; ?>
+<?php
+require 'class/DB.class.php';
+
+$db = new DB();
+
+ ?>

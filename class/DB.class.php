@@ -3,12 +3,10 @@
 2017.04.07*/
 
 class DB {
-    $url = parse_url(getenv('DATABASE_URL'));
-
-    var_dump($pdo->getAttribute(PDO::ATTR_SERVER_VERSION));
-    const DB_HOST = sprintf('pgsql:host=%s;dbname=%s', $url['host'], substr($url['path'], 1));
-    const DB_USER = $url['user'];
-    const DB_PASSWORD = $url['pass'];
+    const DB_URL = parse_url(getenv('DATABASE_URL'));
+    const DB_HOST = sprintf('pgsql:host=%s;dbname=%s', self::DB_URL['host'], substr(self::DB_URL['path'], 1));
+    const DB_USER = self::DB_URL['user'];
+    const DB_PASSWORD = self::DB_URL['pass'];
     const DB_OPTIONS = array(
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,

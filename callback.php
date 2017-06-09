@@ -62,16 +62,30 @@ if($type == 'follow'){
             $message = "コードの承認が完了しました。";
         }
     }elseif(substr($get_message, 0, 5) == 'sc_y:'){
-        $joiner = new Joiner();
         $sc_id = substr($get_message, 5);
-        $user_id = $Joiner->lineIdToId($userId);
-        $Joiner->joinAnswer($sc_id, $user_id);
+        $sql = 'SELECT id from users WHERE line_id=:line_id';
+        $data = array(':lina_id' => $lina_id);
+        $recode = $thiqueryPost($sql, $data);
+        $row = $db->dbFetch($recode);
+        $sql = 'INSERT INTO joiners (sc_id, user_id, created_at, updated_at) VALUES (:sc_id, user_id, NOW(), NOW(), 1)';
+        $data = array(
+            ':sc_id' => $sc_id,
+            ':user_id' => $row[0]['id']
+        );
+        $thiqueryPost($sql, $data);
         $message = '回答ありがとうございます';
     }elseif(substr($get_message, 0, 5) == 'sc_n:'){
-        $joiner = new Joiner();
         $sc_id = substr($get_message, 5);
-        $user_id = $Joiner->lineIdToId($userId);
-        $Joiner->noJoinAnswer($sc_id, $user_id);
+        $sql = 'SELECT id from users WHERE line_id=:line_id';
+        $data = array(':lina_id' => $lina_id);
+        $recode = $thiqueryPost($sql, $data);
+        $row = $db->dbFetch($recode);
+        $sql = 'INSERT INTO joiners (sc_id, user_id, created_at, updated_at) VALUES (:sc_id, user_id, NOW(), NOW(), 2)';
+        $data = array(
+            ':sc_id' => $sc_id,
+            ':user_id' => $row[0]['id']
+        );
+        $thiqueryPost($sql, $data);
         $message = '回答ありがとうございます';
     }
 }

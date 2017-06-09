@@ -2,14 +2,16 @@
 
 //detabase class 読み込み
 require_once('DB.class.php');
+require_once('Validate.class.php');
 
-class Schedule
+class Schedule extends Validate
 {
 
     private $db;
 
     public function __construct(){
         $this->db = new DB();
+        parent::__constract();
     }
 
     public function insertSchedule($sc_type, $description, $place, $sc_date, $start_time, $finish_time)
@@ -23,5 +25,16 @@ class Schedule
             ':finish_time' => $finish_time
         );
         $this->db->queryPost($sql, $data);
+        $sql2 = 'SELECT * FROM schedules ORDER BY id DESC LIMIT 1';
+        $recode = $this->db->queryPost($sql2, array());
+        $row = $this->db->dbFetch($recode);
+        return $row;
+    }
+    public function getMessagingList()
+    {
+        $sql = 'SELECT email from users';
+        $recode = $this->db->queryPost($sql, array());
+        $row = $this->db->dbFetch($recode);
+        return $row;
     }
 }

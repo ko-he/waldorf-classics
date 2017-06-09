@@ -12,7 +12,7 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => '
 
 $schedule = new Schedule();
 if(!empty($_POST)){
-    $schedule->validRequired($_POST['date'], 'date');
+    $schedule->validRequired($_POST['sc_date'], 'sc_date');
     $schedule->validRequired($_POST['place'], 'place');
     $schedule->validRequired($_POST['start_time'], 'start_time');
     $schedule->validRequired($_POST['finish_time'], 'finish_time');

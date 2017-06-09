@@ -63,8 +63,10 @@ if($type == 'follow'){
         }
     }
 }elseif($type == 'postback') {
+
     $get_message = $json_obj->{"events"}[0]->{"postback"}->{'data'};
     $sc_id = substr($get_message, 5);
+
     if(substr($get_message, 0, 5) == 'sc_y:'){
         $sql = 'SELECT * FROM users WHERE line_id=:line_id';
         $data = array(':line_id' => $userId);
@@ -88,13 +90,34 @@ if($type == 'follow'){
             $db->queryPost($sql, $data);
             $message = '回答ありがとうございます';
         }
-    }
-    $sc_id = substr($get_message, 0, 5);
+    }elseif(substr($get_message, 0, 5) == 'sc_n:'){
+        $sql = 'SELECT * FROM users WHERE line_id=:line_id';
+        $data = array(':line_id' => $userId);
+        $recode = $db->queryPost($sql, $data);
+        $row = $db->dbFetch($recode);
 
+        $sql = 'SELECT * FROM joiners WHERE sc_id=:sc_id AND user_id=:user_id';
+        $data = array(
+         ':sc_id' => $sc_id,
+         ':user_id' => $row[0]['id']
+        );
+        $recode = $db->queryPost($sql, $data);
+        $res = $db->dbFetch($recode);
+
+        if(empty($res)){
+            $sql = 'INSERT INTO joiners (sc_id, user_id, created_at, updated_at, can_join) VALUES (:sc_id, :user_id, NOW(), NOW(), 2)';
+            $data = array(
+             ':sc_id' => $sc_id,
+             ':user_id' => $row[0]['id']
+            );
+            $db->queryPost($sql, $data);
+            $message = '回答ありがとうございます';
+        }
+    }
 }
 
 
-$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($row[0]['id']);
+$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
 $response = $bot->replyMessage($reply_token, $textMessageBuilder);
 
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();

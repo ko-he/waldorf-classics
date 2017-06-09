@@ -64,12 +64,15 @@ if($type == 'follow'){
     }
 }elseif($type == 'postback') {
     $get_message = $json_obj->{"events"}[0]->{"postback"}->{'data'};
+    if(substr($get_message, 0, 5) == 'sc_y:'){
+        $message = 'Y';
+    }
     $sc_id = substr($get_message, 0, 5);
 
 }
 
 
-$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($sc_id);
+$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
 $response = $bot->replyMessage($reply_token, $textMessageBuilder);
 
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();

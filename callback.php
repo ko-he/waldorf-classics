@@ -64,10 +64,37 @@ if($type == 'follow'){
     }
 }elseif($type == 'postback') {
     $get_message = $json_obj->{"events"}[0]->{"postback"}->{'data'};
+    if(substr($get_message, 0, 5) == 'sc_y:'){
+         $sc_id = substr($get_message, 5);
+         $sql = 'SELECT id from users WHERE line_id=:line_id';
+         $data = array(':lina_id' => $lina_id);
+         $recode = $thiqueryPost($sql, $data);
+         $row = $db->dbFetch($recode);
+         $sql = 'INSERT INTO joiners (sc_id, user_id, created_at, updated_at) VALUES (:sc_id, user_id, NOW(), NOW(), 1)';
+         $data = array(
+             ':sc_id' => $sc_id,
+             ':user_id' => $row[0]['id']
+         );
+         $thiqueryPost($sql, $data);
+         $message = '回答ありがとうございます';
+     }elseif(substr($get_message, 0, 5) == 'sc_n:'){
+         $sc_id = substr($get_message, 5);
+         $sql = 'SELECT id from users WHERE line_id=:line_id';
+         $data = array(':lina_id' => $lina_id);
+         $recode = $thiqueryPost($sql, $data);
+         $row = $db->dbFetch($recode);
+         $sql = 'INSERT INTO joiners (sc_id, user_id, created_at, updated_at) VALUES (:sc_id, user_id, NOW(), NOW(), 2)';
+         $data = array(
+             ':sc_id' => $sc_id,
+             ':user_id' => $row[0]['id']
+         );
+         $thiqueryPost($sql, $data);
+         $message = '回答ありがとうございます';
+     }
 }
 
 
-$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($get_message);
+$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
 $response = $bot->replyMessage($reply_token, $textMessageBuilder);
 
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();

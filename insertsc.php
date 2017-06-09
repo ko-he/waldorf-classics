@@ -48,6 +48,7 @@ if(!empty($_POST)){
                 $response = $bot->pushMessage($value['line_id'], $textMessageBuilder);
 
             }
+        }
     }
 }
 

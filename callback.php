@@ -66,18 +66,18 @@ if($type == 'follow'){
     $get_message = $json_obj->{"events"}[0]->{"postback"}->{'data'};
     $sc_id = substr($get_message, 0, 5);
     if(substr($get_message, 0, 5) == 'sc_y:'){
-        // $sql = 'SELECT id from users WHERE line_id=:line_id';
-        // $data = array(':lina_id' => $userId);
-        // $recode = $db->queryPost($sql, $data);
-        // $row = $db->dbFetch($recode);
+        $sql = 'SELECT * from users WHERE line_id=:line_id';
+        $data = array(':lina_id' => $userId);
+        $recode = $db->queryPost($sql, $data);
+        $row = $db->dbFetch($recode);
 
 
-        $sql = 'INSERT INTO joiners (sc_id, user_id, created_at, updated_at, can_join) VALUES (:sc_id, :user_id, NOW(), NOW(), 1)';
-        $data = array(
-         ':sc_id' => $sc_id,
-         ':user_id' => 2
-        );
-        $db->queryPost($sql, $data);
+        // $sql = 'INSERT INTO joiners (sc_id, user_id, created_at, updated_at, can_join) VALUES (:sc_id, :user_id, NOW(), NOW(), 1)';
+        // $data = array(
+        //  ':sc_id' => $sc_id,
+        //  ':user_id' =>
+        // );
+        // $db->queryPost($sql, $data);
         $message = '回答ありがとうございます';
     }
     $sc_id = substr($get_message, 0, 5);
@@ -85,7 +85,7 @@ if($type == 'follow'){
 }
 
 
-$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
+$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($row[0]['name']);
 $response = $bot->replyMessage($reply_token, $textMessageBuilder);
 
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();

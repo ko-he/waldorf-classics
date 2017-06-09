@@ -22,7 +22,7 @@ if(!empty($_POST)){
         if(empty($user->err_msg)){
             $_SESSION['id'] = $user->id;
             $_SESSION['time'] = time();
-            header('location:index.php');
+            header('location: https://waldorf-classics.herokuapp.com');
         }
     }
 }

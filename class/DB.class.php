@@ -9,8 +9,12 @@ class DB {
     public function __construct(){
         $url = parse_url(getenv('DATABASE_URL'));
         $dsn = sprintf('pgsql:host=%s;dbname=%s', $url['host'], substr($url['path'], 1));
+        $options = array(
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        );
         try{
-            $this->dbh = new PDO($dsn, $url['user'], $url['pass']);
+            $this->dbh = new PDO($dsn, $url['user'], $url['pass'], $options);
         }catch(PDOException $e){
             exit('missing connect to database'.$e->message());
         }

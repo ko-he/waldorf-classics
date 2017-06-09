@@ -75,7 +75,7 @@ if($type == 'follow'){
         $sql = 'INSERT INTO joiners (sc_id, user_id, created_at, updated_at, can_join) VALUES (:sc_id, :user_id, NOW(), NOW(), 1)';
         $data = array(
          ':sc_id' => $sc_id,
-         ':user_id' => $row[0]['id']
+         ':user_id' => 2
         );
         $db->queryPost($sql, $data);
         $message = '回答ありがとうございます';
@@ -85,7 +85,7 @@ if($type == 'follow'){
 }
 
 
-$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($userId);
+$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder();
 $response = $bot->replyMessage($reply_token, $textMessageBuilder);
 
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();

@@ -1,7 +1,7 @@
 <?php
 //データベース接続、データベース関連クラス読み込み
 require_once 'class/DB.class.php';
-require_once 'class/Joiner.class.php';
+// require_once 'class/Joiner.class.php';
 
 //line api sdk 読み込み
 require_once 'vendor/autoload.php';

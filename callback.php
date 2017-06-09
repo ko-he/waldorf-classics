@@ -1,6 +1,7 @@
 <?php
 //データベース接続、データベース関連クラス読み込み
 require_once 'class/DB.class.php';
+require_once 'class/Joiner.class.php';
 
 //line api sdk 読み込み
 require_once 'vendor/autoload.php';
@@ -60,6 +61,18 @@ if($type == 'follow'){
 
             $message = "コードの承認が完了しました。";
         }
+    }elseif(substr($get_message, 0, 5) == 'sc_y:'){
+        $joiner = new Joiner();
+        $sc_id = substr($get_message, 5);
+        $user_id = $Joiner->lineIdToId($userId);
+        $Joiner->joinAnswer($sc_id, $user_id);
+        $message = '回答ありがとうございます';
+    }elseif(substr($get_message, 0, 5) == 'sc_n:'){
+        $joiner = new Joiner();
+        $sc_id = substr($get_message, 5);
+        $user_id = $Joiner->lineIdToId($userId);
+        $Joiner->noJoinAnswer($sc_id, $user_id);
+        $message = '回答ありがとうございます';
     }
 }
 

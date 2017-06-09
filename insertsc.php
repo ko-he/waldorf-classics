@@ -35,7 +35,7 @@ if(!empty($_POST)){
                 $response = $sg->client->mail()->send()->post($mail);
 
             }else{
-                $message = 'hellow line';
+                $message = 'hello line';
                 $yes_post = new PostbackTemplateActionBuilder('YES', 'sc_y:'.$row[0]['id']);
                 $no_post = new PostbackTemplateActionBuilder('NO', 'sc_n:'.$row[0]['id']);
                 // Confirmテンプレートを
@@ -53,7 +53,7 @@ if(!empty($_POST)){
 }
 
 
-
+print_r($schedules->err_msg);
 
  ?>
  <!DOCTYPE html>

@@ -67,7 +67,7 @@ if($type == 'follow'){
     $sc_id = substr($get_message, 0, 5);
     if(substr($get_message, 0, 5) == 'sc_y:'){
         $sql = 'SELECT id from users WHERE line_id=:line_id';
-        $data = array(':lina_id' => $lina_id);
+        $data = array(':lina_id' => $userId);
         $recode = $db->queryPost($sql, $data);
         $row = $db->dbFetch($recode);
         $sql = 'INSERT INTO joiners (sc_id, user_id, created_at, updated_at, can_join) VALUES (:sc_id, :user_id, NOW(), NOW(), 1)';

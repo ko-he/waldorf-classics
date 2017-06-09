@@ -70,7 +70,7 @@ if($type == 'follow'){
         $data = array(':lina_id' => $lina_id);
         $recode = $db->queryPost($sql, $data);
         $row = $db->dbFetch($recode);
-        $sql = 'INSERT INTO joiners (sc_id, user_id, created_at, updated_at can_join) VALUES (:sc_id, user_id, NOW(), NOW(), 1)';
+        $sql = 'INSERT INTO joiners (sc_id, user_id, created_at, updated_at, can_join) VALUES (:sc_id, user_id, NOW(), NOW(), 1)';
         $data = array(
          ':sc_id' => $sc_id,
          ':user_id' => $row[0]['id']

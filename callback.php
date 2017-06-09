@@ -66,19 +66,28 @@ if($type == 'follow'){
     $get_message = $json_obj->{"events"}[0]->{"postback"}->{'data'};
     $sc_id = substr($get_message, 5);
     if(substr($get_message, 0, 5) == 'sc_y:'){
-        $sql = 'SELECT * from users WHERE line_id=:line_id';
+        $sql = 'SELECT * FROM users WHERE line_id=:line_id';
         $data = array(':line_id' => $userId);
         $recode = $db->queryPost($sql, $data);
         $row = $db->dbFetch($recode);
 
-
-        $sql = 'INSERT INTO joiners (sc_id, user_id, created_at, updated_at, can_join) VALUES (:sc_id, :user_id, NOW(), NOW(), 1)';
+        $sql = 'SELECT * FROM joiners WHERE sc_id=:sc_id AND user_id=:user_id';
         $data = array(
          ':sc_id' => $sc_id,
          ':user_id' => $row[0]['id']
         );
-        $db->queryPost($sql, $data);
-        $message = '回答ありがとうございます';
+        $recode = $db->queryPost($sql, $data);
+        $res = $db->dbFetch($recode);
+
+        if(empty($res)){
+            $sql = 'INSERT INTO joiners (sc_id, user_id, created_at, updated_at, can_join) VALUES (:sc_id, :user_id, NOW(), NOW(), 1)';
+            $data = array(
+             ':sc_id' => $sc_id,
+             ':user_id' => $row[0]['id']
+            );
+            $db->queryPost($sql, $data);
+            $message = '回答ありがとうございます';
+        }
     }
     $sc_id = substr($get_message, 0, 5);
 

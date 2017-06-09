@@ -8,7 +8,7 @@ require 'vendor/autoload.php';
 $from = new SendGrid\Email(null, "localhost.ko@gmail.com");
 $subject = "Hello World from the SendGrid PHP Library!";
 $to = new SendGrid\Email(null, "joujisaru@yahoo.co.jp");
-$content = new SendGrid\Content("text/plain", "Hello, Email!");
+$content = new SendGrid\Content("text/html", "<a href='mydo-obachan.com'>Mydo</a>");
 $mail = new SendGrid\Mail($from, $subject, $to, $content);
 
 $apiKey = getenv(SENDGRID_API_KEY);

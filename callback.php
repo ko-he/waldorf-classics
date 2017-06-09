@@ -67,7 +67,7 @@ if($type == 'follow'){
     $sc_id = substr($get_message, 0, 5);
     if(substr($get_message, 0, 5) == 'sc_y:'){
         $sql = 'SELECT * from users WHERE line_id=:line_id';
-        $data = array(':lina_id' => $userId);
+        $data = array(':line_id' => $userId);
         $recode = $db->queryPost($sql, $data);
         $row = $db->dbFetch($recode);
 

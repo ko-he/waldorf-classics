@@ -35,7 +35,7 @@ if(!empty($_POST)){
                 $response = $sg->client->mail()->send()->post($mail);
 
             }else{
-                $message = 'hello line';
+                $text = 'hello line';
                 $yes_post = new LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder('YES', 'sc_y:'.$row[0]['id']);
                 $no_post = new LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder('NO', 'sc_n:'.$row[0]['id']);
                 // Confirmテンプレートを
@@ -43,9 +43,11 @@ if(!empty($_POST)){
                 // Confirmメッセージを作る
                 $confirm_message = new LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('WC Schedule', $confirm);
                 // push
-                $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
-                $textMessageBuilder->add($confirm_message);
-                $response = $bot->pushMessage($value['line_id'], $textMessageBuilder);
+                $message = new LINE\LINEBot\MessageBuilder\MultiMessageBuilder();
+                $message->add($confirm_message);
+                $message->add($textMessageBuilder);
+                $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text);
+                $response = $bot->pushMessage($value['line_id'], $message);
 
             }
         }

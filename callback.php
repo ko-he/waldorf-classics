@@ -83,7 +83,7 @@ if($type == 'follow'){
 }
 
 
-$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
+$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($row[0]['id']);
 $response = $bot->replyMessage($reply_token, $textMessageBuilder);
 
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();

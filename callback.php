@@ -63,7 +63,7 @@ if($type == 'follow'){
         }
     }
 }elseif($type == 'postback') {
-    $get_message = $json_obj->{"events"}[0]->{"postback"}->{'data'}
+    $get_message = $json_obj->{"events"}[0]->{"postback"}->{'data'};
 }
 
 

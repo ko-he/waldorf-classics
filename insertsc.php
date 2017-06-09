@@ -45,8 +45,8 @@ if(!empty($_POST)){
                 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text);
                 // push
                 $message = new LINE\LINEBot\MessageBuilder\MultiMessageBuilder();
-                $message->add($confirm_message);
                 $message->add($textMessageBuilder);
+                $message->add($confirm_message);
                 $response = $bot->pushMessage($value['line_id'], $message);
 
             }

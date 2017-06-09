@@ -16,10 +16,11 @@ class Schedule extends Validate
 
     public function insertSchedule($sc_type, $description, $place, $sc_date, $start_time, $finish_time)
     {
-        $sql = 'INSERT INTO schedules SET sc_type=:sc_type, description=:description, place=:place, sc_date=:sc_date, start_time=:start_time, finish_time=:finish_time, created_at=NOW(), updated_at=NOW()';
+        $sql = 'INSERT INTO schedules (sc_type, description, place, sc_date, start_time, finish_time, created_at, updated_at) VALUES (:sc_type, :description, :place, :sc_date, :start_time, :finish_time, NOW(), NOW())';
         $data = array(
             ':sc_type' => $sc_type,
             ':description' => $description,
+            ':place' => $place,
             ':sc_date' => $sc_date,
             ':start_time' => $start_time,
             ':finish_time' => $finish_time

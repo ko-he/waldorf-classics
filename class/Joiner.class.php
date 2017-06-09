@@ -19,7 +19,7 @@ class Joiner
         );
         $this->db->queryPost($sql, $data);
     }
-    public function noJoinAnswer($sc_id, $user_id,)
+    public function noJoinAnswer($sc_id, $user_id)
     {
         $sql = 'INSERT INTO joiners (sc_id, user_id, created_at, updated_at) VALUES (:sc_id, user_id, NOW(), NOW(), 2)';
         $data = array(

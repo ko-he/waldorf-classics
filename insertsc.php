@@ -69,6 +69,7 @@ if(!empty($_POST)){
                  <option value="2">試合・大会</option>
              </select></p>
              <p><input type="text" name="description" value=""></p>
+             <p><input type="text" name="place" value=""></p>
              <p><input type="date" name="sc_date" value=""></p>
              <p><input type="time" name="start_time" value=""></p>
              <p><input type="time" name="finish_time" value=""></p>

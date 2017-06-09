@@ -10,7 +10,7 @@ class Joiner
         $this->db = new DB();
     }
 
-    public function joinAnswer($sc_id, $user_id,)
+    public function joinAnswer($sc_id, $user_id)
     {
         $sql = 'INSERT INTO joiners (sc_id, user_id, created_at, updated_at) VALUES (:sc_id, user_id, NOW(), NOW(), 1)';
         $data = array(

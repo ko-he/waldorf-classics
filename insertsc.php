@@ -70,8 +70,8 @@ if(!empty($_POST)){
              </select></p>
              <p><input type="text" name="description" value=""></p>
              <p><input type="date" name="sc_date" value=""></p>
-             <p><input type="text" name="start_time" value=""></p>
-             <p><input type="text" name="finish_time" value=""></p>
+             <p><input type="time" name="start_time" value=""></p>
+             <p><input type="time" name="finish_time" value=""></p>
              <p><input type="submit" value="submit"></p>
          </form>
      </body>

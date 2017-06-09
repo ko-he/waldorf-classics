@@ -64,7 +64,7 @@ if($type == 'follow'){
     }
 }elseif($type == 'postback') {
     $get_message = $json_obj->{"events"}[0]->{"postback"}->{'data'};
-    $sc_id = substr($get_message, 0, 5);
+    $sc_id = substr($get_message, 5);
     if(substr($get_message, 0, 5) == 'sc_y:'){
         $sql = 'SELECT * from users WHERE line_id=:line_id';
         $data = array(':line_id' => $userId);

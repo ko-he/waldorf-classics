@@ -38,15 +38,15 @@ if(!empty($_POST)){
                 $text = 'hello line';
                 $yes_post = new LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder('YES', 'sc_y:'.$row[0]['id']);
                 $no_post = new LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder('NO', 'sc_n:'.$row[0]['id']);
-                // Confirmテンプレートを
+                // Confirmテンプレート
                 $confirm = new LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder('上記のスケジュールに参加できますか？', [$yes_post, $no_post]);
-                // Confirmメッセージを作る
+                // メッセージを作る
                 $confirm_message = new LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('WC Schedule', $confirm);
+                $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text);
                 // push
                 $message = new LINE\LINEBot\MessageBuilder\MultiMessageBuilder();
                 $message->add($confirm_message);
                 $message->add($textMessageBuilder);
-                $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text);
                 $response = $bot->pushMessage($value['line_id'], $message);
 
             }

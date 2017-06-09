@@ -10,8 +10,8 @@ class Schedule extends Validate
     private $db;
 
     public function __construct(){
+        parent::__construct();
         $this->db = new DB();
-        parent::__constract();
     }
 
     public function insertSchedule($sc_type, $description, $place, $sc_date, $start_time, $finish_time)

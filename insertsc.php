@@ -36,7 +36,7 @@ if(!empty($_POST)){
 
             }else{
                 $message = 'hello line';
-                $yes_post = new \LINE\LINEBot\MessageBuilder\PostbackTemplateActionBuilder('YES', 'sc_y:'.$row[0]['id']);
+                $yes_post = new LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder('YES', 'sc_y:'.$row[0]['id']);
                 $no_post = new PostbackTemplateActionBuilder('NO', 'sc_n:'.$row[0]['id']);
                 // Confirmテンプレートを
                 $confirm = new ConfirmTemplateBuilder('上記のスケジュールに参加できますか？', [$yes_post, $no_post]);

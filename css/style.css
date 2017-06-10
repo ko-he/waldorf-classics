@@ -14,7 +14,7 @@ body {
   max-width: 800px;
   margin: 0 auto;
   overflow: auto;
-  background: #000;
+  background: url(../images/opbg.png) left top repeat-x;
   background-size: auto 100%;
 }
 

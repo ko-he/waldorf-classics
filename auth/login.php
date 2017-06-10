@@ -29,15 +29,17 @@ if(!empty($_POST)){
 ?>
     <?php $file_path = '../'; ?>
     <?php require '../_include/header.php'; ?>
-            <h1>Woldorf Classics</h1>
-        </header>
-        <div class="content">
-            <form action="" method="post">
-                <p><span class="error"><?php if(!empty($user->err_msg['email'])) echo h($user->err_msg['email']); ?></span>
-                <input type="text" name="email" value="<?php if(!empty($_POST['email'])) echo h($_POST['email']); ?>" placeholder="E-mail"></p>
-                <p><span class="error"><?php if(!empty($user->err_msg['password'])) echo h($user->err_msg['password']); ?></span>
-                <input type="password" name="password" value="<?php if(!empty($_POST['password'])) echo h($_POST['password']); ?>" placeholder="Password"></p>
-                <p class="submit"><input type="submit" value="Login"></p>
-            </form>
+                <h1>Woldorf Classics</h1>
+            </header>
+            <div class="content">
+                <form action="" method="post">
+                    <p><span class="error"><?php if(!empty($user->err_msg['email'])) echo h($user->err_msg['email']); ?></span>
+                    <input type="text" name="email" value="<?php if(!empty($_POST['email'])) echo h($_POST['email']); ?>" placeholder="E-mail"></p>
+                    <p><span class="error"><?php if(!empty($user->err_msg['password'])) echo h($user->err_msg['password']); ?></span>
+                    <input type="password" name="password" value="<?php if(!empty($_POST['password'])) echo h($_POST['password']); ?>" placeholder="Password"></p>
+                    <p class="submit"><input type="submit" value="Login"></p>
+                </form>
+             </div>
          </div>
+     </div>
      <?php require '../_include/footer.php'; ?>

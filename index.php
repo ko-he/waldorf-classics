@@ -28,18 +28,23 @@ $schedules = $schedule->getSchedules();
                 </div>
                 <h2 id="schedule">Schedule</h2>
                 <ul class="schedules">
-                    <li class="schedule practise">
-                        <p class="date">06/11</p>
-                        <p class="time">時間：<span>09:00</span>~<span >13:00</span></p>
-                        <p class="place">場所：野球場</p>
-                        <p class="label">練習</p>
-                    </li>
-                    <li class="schedule match">
-                        <p class="date">06/25</p>
-                        <p class="time">時間：<span>09:00</span>~</p>
-                        <p class="place">場所：野球場</p>
-                        <p class="label">試合</p>
-                    </li>
+                    <?php foreach($Schedules as $value): ?>
+                        <?php if($value['sc_type'] == 1): ?>
+                            <li class="schedule practise">
+                                <p class="date"><?php echo h($value['sc_date']; ?></p>
+                                <p class="time">時間：<span><?php echo h($value['start_time']; ?></span>~<span ><?php echo h($value['finish_time']; ?></span></p>
+                                <p class="place">場所：<?php echo h($value['place']; ?></p>
+                                <p class="label">練習</p>
+                            </li>
+                        <?php else: ?>
+                            <li class="schedule match">
+                                <p class="date"><?php echo h($value['sc_date']; ?></p>
+                                <p class="time">時間：<span><?php echo h($value['start_time']; ?></span>~</p>
+                                <p class="place">場所：<?php echo h($value['place']; ?></p>
+                                <p class="label">試合</p>
+                            </li>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
                 </ul>
             </div>
 <?php require '_include/footer.php'; ?>

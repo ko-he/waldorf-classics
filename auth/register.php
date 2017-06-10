@@ -50,13 +50,13 @@ if(!empty($_POST)){
     <div class="content">
         <form action="" method="post">
             <span><?php if(!empty($user->err_msg['name'])) echo h($user->err_msg['name']); ?></span>
-            <input type="text" name="name" value="<?php if(!empty($_POST['name'])) echo h($_POST['name']); ?>">
+            <p><input type="text" name="name" value="<?php if(!empty($_POST['name'])) echo h($_POST['name']); ?>" placeholder="Name"></p>
             <span><?php if(!empty($user->err_msg['email'])) echo h($user->err_msg['email']); ?></span>
-            <input type="text" name="email" value="<?php if(!empty($_POST['email'])) echo h($_POST['email']); ?>">
+            <p><input type="text" name="email" value="<?php if(!empty($_POST['email'])) echo h($_POST['email']); ?>" placeholder="E-mail"></p>
             <span><?php if(!empty($user->err_msg['password'])) echo h($user->err_msg['password']); ?></span>
-            <input type="password" name="password" value="<?php if(!empty($_POST['password'])) echo h($_POST['password']); ?>">
+            <p><input type="password" name="password" value="<?php if(!empty($_POST['password'])) echo h($_POST['password']); ?>" placeholder="Password"></p>
             <span><?php if(!empty($user->err_msg['password_retype'])) echo h($user->err_msg['password_retype']); ?></span>
-            <input type="password" name="password_retype" value="<?php if(!empty($_POST['password_retype'])) echo h($_POST['password_retype']); ?>">
+            <p><input type="password" name="password_retype" value="<?php if(!empty($_POST['password_retype'])) echo h($_POST['password_retype']); ?>" placeholder="Password Again"></p>
             <p class="submit"><input type="submit" value="Sign Up"></p>
         </form>
      </div>

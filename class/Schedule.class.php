@@ -50,13 +50,13 @@ class Schedule extends Validate
         $sql = 'SELECT * FROM schedules WHERE sc_date>=NOW() AND sc_type=2 ORDER BY sc_date ASC LIMIT 1';
         $recode = $this->db->queryPost($sql, array());
         $row = $this->db->dbFetch($recode);
-        return $row;
+        return $row[0];
     }
     public function getNextPractice()
     {
         $sql = 'SELECT * FROM schedules WHERE sc_date>=NOW() AND sc_type=1 ORDER BY sc_date ASC LIMIT 1';
         $recode = $this->db->queryPost($sql, array());
         $row = $this->db->dbFetch($recode);
-        return $row;
+        return $row[0];
     }
 }

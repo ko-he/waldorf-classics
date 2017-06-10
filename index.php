@@ -28,7 +28,7 @@ $schedules = $schedule->getSchedules();
                 </div>
                 <h2 id="schedule">Schedule</h2>
                 <ul class="schedules">
-                    <?php foreach($Schedules as $value): ?>
+                    <?php foreach($schedules as $value): ?>
                         <?php if($value['sc_type'] == 1): ?>
                             <li class="schedule practise">
                                 <p class="date"><?php echo h($value['sc_date']); ?></p>

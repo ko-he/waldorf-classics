@@ -60,5 +60,4 @@ if(!empty($_POST)){
             <p class="submit"><input type="submit" value="Sign Up"></p>
         </form>
      </div>
- </div>
  <?php require '../_include/footer.php'; ?>

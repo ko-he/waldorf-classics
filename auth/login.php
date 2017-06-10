@@ -27,6 +27,7 @@ if(!empty($_POST)){
     }
 }
 ?>
+    <?php $file_path = '../'; ?>
     <?php require '../_include/header.php'; ?>
             <h1>Woldorf Classics</h1>
         </header>

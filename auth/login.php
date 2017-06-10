@@ -27,7 +27,7 @@ if(!empty($_POST)){
     }
 }
 ?>
-    <?php require '_include/header.php'; ?>
+    <?php require '../_include/header.php'; ?>
             <h1>Woldorf Classics</h1>
         </header>
         <div class="content">
@@ -39,4 +39,4 @@ if(!empty($_POST)){
                 <p class="submit"><input type="submit" value="Login"></p>
             </form>
          </div>
-     <?php require '_include/footer.php'; ?>
+     <?php require '../_include/footer.php'; ?>

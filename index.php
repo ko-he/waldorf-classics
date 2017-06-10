@@ -23,7 +23,7 @@ $schedules = $schedule->getSchedules();
                     <div class="next-plactis">
                         <p class="label">次の練習</p>
                         <p class="place"><?php echo h($next_practice['place']); ?></p>
-                        <p class="date-time"><span class="date"><?php echo h(substr($next_practice['sc_date'], 5)); ?></span><span class="time"><?php echo h(substr($next_practice['start_time'], 0, 5)); ?></span>~<span class="time"><?php echo h(substr($next_practice['finish_time'], 0, 5)); ?></span></p>
+                        <p class="date-time"><span class="date"><?php echo h(dateformat($next_practice['sc_date'])); ?></span><span class="time"><?php echo h(substr($next_practice['start_time'], 0, 5)); ?></span>~<span class="time"><?php echo h(substr($next_practice['finish_time'], 0, 5)); ?></span></p>
                     </div>
                 </div>
                 <h2 id="schedule">Schedule</h2>

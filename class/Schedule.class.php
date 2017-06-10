@@ -38,4 +38,22 @@ class Schedule extends Validate
         $row = $this->db->dbFetch($recode);
         return $row;
     }
+    public function getSchedules()
+    {
+        $sql = 'SELECT * FROM schedules WHERE sc_date>=NOW() ORDER BY sc_date ASC LIMIT 10';
+        $recode = $db->queryPost($sql, array());
+        $row = $db->dbFetch($recode);
+    }
+    public function getNextMatch()
+    {
+        $sql = 'SELECT * FROM schedules WHERE sc_date>=NOW() AND sc_type=2 ORDER BY sc_date ASC LIMIT 1';
+        $recode = $db->queryPost($sql, array());
+        $row = $db->dbFetch($recode);
+    }
+    public function getNextPractice()
+    {
+        $sql = 'SELECT * FROM schedules WHERE sc_date>=NOW() AND sc_type=1 ORDER BY sc_date ASC LIMIT 1';
+        $recode = $db->queryPost($sql, array());
+        $row = $db->dbFetch($recode);
+    }
 }

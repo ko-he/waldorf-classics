@@ -41,7 +41,7 @@ if(!empty($_POST)){
                 // Confirmテンプレート
                 $confirm = new LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder('上記のスケジュールに参加できますか？', [$yes_post, $no_post]);
                 // メッセージを作る
-                $confirm_message = new LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('WC Schedule', $confirm);
+                $confirm_message = new LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('Waldorf Classics Schedule', $confirm);
                 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text);
                 // push
                 $message = new LINE\LINEBot\MessageBuilder\MultiMessageBuilder();
@@ -59,7 +59,7 @@ print_r($schedules->err_msg);
 
  ?>
     <?php require '_include/header.php'; ?>
-            <h1>Woldorf Classics</h1>
+            <h1>Waldorf Classics</h1>
         </header>
         <div class="content">
              <form action="" method="post">
@@ -67,8 +67,8 @@ print_r($schedules->err_msg);
                      <option value="1">練習</option>
                      <option value="2">試合・大会</option>
                  </select></p>
-                 <p><input type="text" name="description" value=""></p>
-                 <p><input type="text" name="place" value=""></p>
+                 <p><input type="text" name="description" value="" placeholder="大会名など"></p>
+                 <p><input type="text" name="place" value="" placeholder="場所"></p>
                  <p><input type="date" name="sc_date" value=""></p>
                  <p><input type="time" name="start_time" value=""></p>
                  <p><input type="time" name="finish_time" value=""></p>

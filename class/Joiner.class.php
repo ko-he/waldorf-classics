@@ -24,7 +24,7 @@ class Joiner
     {
         //line user id から profile を取得
         if(!empty($line_id)){
-            $response = $bot->getProfile($line_id);
+            $response = $this->bot->getProfile($line_id);
             if ($response->isSucceeded()) {
                 $profile = $response->getJSONDecodedBody();
                 $img_url = $profile['pictureUrl'];

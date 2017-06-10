@@ -31,16 +31,16 @@ $schedules = $schedule->getSchedules();
                     <?php foreach($Schedules as $value): ?>
                         <?php if($value['sc_type'] == 1): ?>
                             <li class="schedule practise">
-                                <p class="date"><?php echo h($value['sc_date']; ?></p>
-                                <p class="time">時間：<span><?php echo h($value['start_time']; ?></span>~<span ><?php echo h($value['finish_time']; ?></span></p>
-                                <p class="place">場所：<?php echo h($value['place']; ?></p>
+                                <p class="date"><?php echo h($value['sc_date']); ?></p>
+                                <p class="time">時間：<span><?php echo h($value['start_time']); ?></span>~<span ><?php echo h($value['finish_time']; ?></span></p>
+                                <p class="place">場所：<?php echo h($value['place']); ?></p>
                                 <p class="label">練習</p>
                             </li>
                         <?php else: ?>
                             <li class="schedule match">
-                                <p class="date"><?php echo h($value['sc_date']; ?></p>
-                                <p class="time">時間：<span><?php echo h($value['start_time']; ?></span>~</p>
-                                <p class="place">場所：<?php echo h($value['place']; ?></p>
+                                <p class="date"><?php echo h($value['sc_date']); ?></p>
+                                <p class="time">時間：<span><?php echo h($value['start_time']); ?></span>~</p>
+                                <p class="place">場所：<?php echo h($value['place']); ?></p>
                                 <p class="label">試合</p>
                             </li>
                         <?php endif; ?>

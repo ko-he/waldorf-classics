@@ -36,7 +36,7 @@ class Joiner
     }
     public function getJoiner($sc_id)
     {
-        $sql = 'SELECT u.name, u.line_id, j.id FROM users u joiners j WHERE j.sc_id=:sc_id AND j.can_join=1 AND j.user_id=u.id';
+        $sql = 'SELECT u.name, u.line_id, j.id FROM users u, joiners j WHERE j.sc_id=:sc_id AND j.can_join=1 AND j.user_id=u.id';
         $data = array(':sc_id' => $sc_id);
 
         $recode = $this->db->queryPost($sql, $data);
@@ -45,7 +45,7 @@ class Joiner
     }
     public function getUnJoiner($sc_id)
     {
-        $sql = 'SELECT u.name, u.line_id, j.id FROM users u joiners j WHERE j.sc_id=:sc_id AND j.can_join=2 AND j.user_id=u.id';
+        $sql = 'SELECT u.name, u.line_id, j.id FROM users u, joiners j WHERE j.sc_id=:sc_id AND j.can_join=2 AND j.user_id=u.id';
         $data = array(':sc_id' => $sc_id);
 
         $recode = $this->db>queryPost($sql, $data);

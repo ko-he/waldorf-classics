@@ -48,7 +48,7 @@ class Joiner
         $sql = 'SELECT u.name, u.line_id, j.id FROM users u, joiners j WHERE j.sc_id=:sc_id AND j.can_join=2 AND j.user_id=u.id';
         $data = array(':sc_id' => $sc_id);
 
-        $recode = $this->db>queryPost($sql, $data);
+        $recode = $this->db->queryPost($sql, $data);
         $row = $this->db->dbFetch($recode);
         return $row;
     }

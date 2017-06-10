@@ -21,7 +21,7 @@
                             scId: scid
                         },
                         success: function (data) {
-                            $(data).appendTo($('.ajax.box'));
+                            $(data).appendTo($('.ajax-box'));
                         }
                     });
 

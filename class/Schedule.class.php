@@ -42,7 +42,7 @@ class Schedule extends Validate
     {
         $sql = 'SELECT * FROM schedules WHERE sc_date>=NOW() ORDER BY sc_date ASC LIMIT 10';
         $recode = $this->db->queryPost($sql, array());
-        $row = $db->dbFetch($recode);
+        if(!empty($recode)) $row = $db->dbFetch($recode);
     }
     public function getNextMatch()
     {

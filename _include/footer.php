@@ -14,7 +14,7 @@
                 });
                 function getJoiners(scid) {
                     $.ajax({
-                        url: 'ajax/getjoinerphp',
+                        url: 'ajax/getjoiner.php',
                         type: 'post',
                         dataType: 'html',
                         data: {

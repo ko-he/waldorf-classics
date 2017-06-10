@@ -43,13 +43,10 @@ if(!empty($_POST)){
     }
 }
 ?>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title></title>
-    </head>
-    <body>
+<?php require '_include/header.php'; ?>
+        <h1>Woldorf Classics</h1>
+    </header>
+    <div class="content">
         <form action="" method="post">
             <span><?php if(!empty($user->err_msg['name'])) echo h($user->err_msg['name']); ?></span>
             <input type="text" name="name" value="<?php if(!empty($_POST['name'])) echo h($_POST['name']); ?>">
@@ -59,7 +56,7 @@ if(!empty($_POST)){
             <input type="password" name="password" value="<?php if(!empty($_POST['password'])) echo h($_POST['password']); ?>">
             <span><?php if(!empty($user->err_msg['password_retype'])) echo h($user->err_msg['password_retype']); ?></span>
             <input type="password" name="password_retype" value="<?php if(!empty($_POST['password_retype'])) echo h($_POST['password_retype']); ?>">
-            <input type="submit" value="会員登録">
+            <p class="submit"><input type="submit" value="Sign Up"></p>
         </form>
-    </body>
-</html>
+     </div>
+ <?php require '_include/footer.php'; ?>

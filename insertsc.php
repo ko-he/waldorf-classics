@@ -58,24 +58,21 @@ if(!empty($_POST)){
 print_r($schedules->err_msg);
 
  ?>
- <!DOCTYPE html>
- <html>
-     <head>
-         <meta charset="utf-8">
-         <title></title>
-     </head>
-     <body>
-         <form action="" method="post">
-             <p><select class="" name="sc_type">
-                 <option value="1">練習</option>
-                 <option value="2">試合・大会</option>
-             </select></p>
-             <p><input type="text" name="description" value=""></p>
-             <p><input type="text" name="place" value=""></p>
-             <p><input type="date" name="sc_date" value=""></p>
-             <p><input type="time" name="start_time" value=""></p>
-             <p><input type="time" name="finish_time" value=""></p>
-             <p><input type="submit" value="submit"></p>
-         </form>
-     </body>
- </html>
+    <?php require '_include/header.php'; ?>
+            <h1>Woldorf Classics</h1>
+        </header>
+        <div class="content">
+             <form action="" method="post">
+                 <p><select class="" name="sc_type">
+                     <option value="1">練習</option>
+                     <option value="2">試合・大会</option>
+                 </select></p>
+                 <p><input type="text" name="description" value=""></p>
+                 <p><input type="text" name="place" value=""></p>
+                 <p><input type="date" name="sc_date" value=""></p>
+                 <p><input type="time" name="start_time" value=""></p>
+                 <p><input type="time" name="finish_time" value=""></p>
+                 <p class="submit"><input type="submit" value="submit"></p>
+             </form>
+         </div>
+     <?php require '_include/footer.php'; ?>

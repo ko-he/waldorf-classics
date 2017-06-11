@@ -24,7 +24,7 @@ $schedules = $schedule->getSchedules();
                         <?php if(!empty($next_match)): ?>
                             <p class="match-name"><?php echo h($next_match['description']); ?></p>
                             <p class="place"><?php echo h($next_match['place']); ?></p>
-                            <p class="date-time"><span class="date"><?php echo h(substr($next_match['sc_date'], 5)); ?></span><span class="time"><?php echo h(substr($next_match['start_time'], 0, 5)); ?></span>~</p>
+                            <p class="date-time"><span class="date"><?php echo h(dateformat($next_match['sc_date'])); ?></span><span class="time"><?php echo h(substr($next_match['start_time'], 0, 5)); ?></span>~</p>
                         <?php else: ?>
                             <p class="no-sc">未定</p>
                         <?php endif; ?>

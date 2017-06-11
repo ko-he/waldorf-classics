@@ -24,7 +24,7 @@ $prof = $user->getUser($_SESSION['id']);
         </div>
         <div class="line">
             <p class="title">LINE を利用する</p>
-            
+                <p class="line-code">承認コード：<?php echo h($prof['line_code']); ?></p>
         </div>
     </div>
 </div>

@@ -39,6 +39,18 @@ header {
   padding: 40px;
 }
 
+.btn a {
+  color: #e6eef6;
+  padding: 7px 20px;
+  text-decoration: none;
+  background: #227fd5;
+  border: solid 1px #227fd5;
+}
+.btn a:hover {
+  background: none;
+  color: #227fd5;
+}
+
 form p {
   margin: 22px auto;
   width: 90%;
@@ -127,6 +139,7 @@ ul.schedules li {
   padding: 10px;
   border-bottom: solid 1px #00203e;
   background: rgba(170, 187, 231, 0.37);
+  cursor: default;
 }
 ul.schedules li.practise .label {
   background: #227fd5;
@@ -152,6 +165,18 @@ ul.schedules li .date {
 }
 ul.schedules li .time, ul.schedules li .place {
   margin-left: 35px;
+}
+
+.prof-box {
+  text-align: center;
+}
+.prof-box p {
+  margin: .8em 0;
+  font-size: 18px;
+}
+.prof-box .title {
+  margin-top: 60px;
+  font-size: 22px;
 }
 
 .popup-wrap {
@@ -215,6 +240,7 @@ ul.schedules li .time, ul.schedules li .place {
   border-left: solid 1px #00203e;
   top: 0;
   right: 0;
+  cursor: default;
 }
 .popup-wrap .popup .label {
   padding: 0 20px;

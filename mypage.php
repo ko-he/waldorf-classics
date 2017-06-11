@@ -23,8 +23,8 @@ $prof = $user->getUser($_SESSION['id']);
                 <p class="btn"><a href="">編集</a></p>
             </div>
             <div class="line">
+                <p class="title">LINE を利用する</p>
                 <?php if(empty($user['lien_id'])): ?>
-                    <p class="title">LINE を利用する</p>
                     <p class="line-code">承認コード：<?php echo h($prof['line_code']); ?></p>
                     <p class="line-btn"><a href="https://line.me/R/ti/p/%40qyf6351f"><img height="40" border="0" alt="友だち追加" src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png"></a></p>
                 <?php else: ?>

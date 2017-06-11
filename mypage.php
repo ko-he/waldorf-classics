@@ -3,9 +3,9 @@ session_start();
 require 'function.php';
 require 'class/User.class.php';
 
-// if(empty($_SESSION['id'])){
-//     header('location: auth/login.php');
-// }
+if(empty($_SESSION['id'])){
+    header('location: auth/login.php');
+}
 
 $user = new User();
 $prof = $user->getUser($_SESSION['id']);
@@ -25,6 +25,7 @@ $prof = $user->getUser($_SESSION['id']);
         <div class="line">
             <p class="title">LINE を利用する</p>
                 <p class="line-code">承認コード：<?php echo h($prof['line_code']); ?></p>
+                <p class="line-btn"><a href="https://line.me/R/ti/p/%40qyf6351f"><img height="40" border="0" alt="友だち追加" src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png"></a></p>
         </div>
     </div>
 </div>

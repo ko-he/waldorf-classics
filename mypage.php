@@ -23,13 +23,7 @@ $prof = $user->getUser($_SESSION['id']);
             <p class="btn"><a href="">編集</a></p>
         </div>
         <div class="line">
-            <p class="title">LINE を利用する</p>
-            <?php if(empty($user['lien_id'])): ?>
-                <p class="line-code">承認コード：<?php echo h($prof['line_code']); ?></p>
-                
-            <?php else: ?>
-                <p>承認済み</p>
-            <?php endif; ?>
+            
         </div>
     </div>
 </div>

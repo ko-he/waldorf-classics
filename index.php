@@ -2,6 +2,10 @@
 require 'class/Schedule.class.php';
 require 'function.php';
 
+if(empty($_SESSION['id'])){
+    header('location: auth/login.php');
+}
+
 $schedule = new Schedule();
 
 $next_match = $schedule->getNextMatch();
@@ -57,7 +61,7 @@ $schedules = $schedule->getSchedules();
                 <div class="popup-wrap">
                     <div class="popup">
                         <div class="ajax-box">
-                            
+
                         </div>
                         <span class="close">✖</span>
                     </div>

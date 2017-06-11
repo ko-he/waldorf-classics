@@ -10,7 +10,9 @@
                     getJoiners($(this).attr('data-sc-id'));
                 });
                 $('.close').on('click', function () {
-                    $('.popup-wrap').fadeOut();
+                    $('.popup-wrap').fadeOut(function () {
+                        $('.ajax-box').empty();
+                    });
                 });
                 function getJoiners(scid) {
                     $.ajax({

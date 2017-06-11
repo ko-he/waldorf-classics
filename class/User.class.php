@@ -52,7 +52,7 @@ class User extends Validate{
         session_destroy();
     }
     public function getUser($id){
-        $sql = 'SELECT * FROM user WHERE id=:id';
+        $sql = 'SELECT * FROM users WHERE id=:id';
         $data = array(':id' => $id);
         $recode = $this->db->queryPost($sql, $data);
         $row = $this->db->dbFetch($recode);

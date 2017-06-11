@@ -23,7 +23,9 @@ $prof = $user->getUser($_SESSION['id']);
             <p class="btn"><a href="">編集</a></p>
         </div>
         <div class="line">
+            <p class="title">LINE を利用する</p>
             
+            <?php endif; ?>
         </div>
     </div>
 </div>

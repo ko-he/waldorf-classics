@@ -18,6 +18,12 @@ if(!empty($_POST)){
     $schedule->validRequired($_POST['finish_time'], 'finish_time');
 
     if(empty($schedule->err_msg)){
+        if($_POST['sc_type'] == 1){
+            $type = '練習';
+        }else{
+            $type = '試合・大会';
+        }
+        $sen_msg = dateformat($_POST['sc_date'])."\n".substr($_POST['start_time'], 0, 5)."~".substr($_POST['finish_time'], 0, 5)."\n\n上記の日時で".$type."を行います。\n\n参加頂ける方はお願いします。";
         $row = $schedule->insertSchedule($_POST['sc_type'], $_POST['description'], $_POST['place'], $_POST['sc_date'], $_POST['start_time'], $_POST['finish_time']);
 
         $list = $schedule->getMessagingList();
@@ -26,7 +32,7 @@ if(!empty($_POST)){
                 $from = new SendGrid\Email(null, "localhost.ko@gmail.com");
                 $subject = "Hello World from the SendGrid PHP Library!";
                 $to = new SendGrid\Email(null, $value['email']);
-                $content = new SendGrid\Content("text/plain", "Hello, Email!");
+                $content = new SendGrid\Content("text/plain", $sen_msg);
                 $mail = new SendGrid\Mail($from, $subject, $to, $content);
 
                 $apiKey = getenv(SENDGRID_API_KEY);
@@ -35,7 +41,7 @@ if(!empty($_POST)){
                 $response = $sg->client->mail()->send()->post($mail);
 
             }else{
-                $text = 'hello line';
+                $text = $sen_msg;
                 $yes_post = new LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder('YES', 'sc_y:'.$row[0]['id']);
                 $no_post = new LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder('NO', 'sc_n:'.$row[0]['id']);
                 // Confirmテンプレート

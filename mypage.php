@@ -25,7 +25,6 @@ $prof = $user->getUser($_SESSION['id']);
         <div class="line">
             <p class="title">LINE を利用する</p>
             
-            <?php endif; ?>
         </div>
     </div>
 </div>

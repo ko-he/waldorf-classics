@@ -28,12 +28,12 @@ body {
   width: 90%;
   max-width: 800px;
   margin: 0 auto;
+  position: relative;
 }
 
 header {
   border-bottom: solid 2px #00203e;
   padding: 10px 20px;
-  position: relative;
 }
 
 nav{

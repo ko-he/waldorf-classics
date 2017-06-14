@@ -73,5 +73,6 @@ $schedules = $schedule->getSchedules();
                         <span class="close">✖</span>
                     </div>
                 </div>
+                <p><a href="insertsc.php">スケージュール登録</a></p>
             </div>
 <?php require '_include/footer.php'; ?>

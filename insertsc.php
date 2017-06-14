@@ -29,10 +29,13 @@ if(!empty($_POST)){
         $list = $schedule->getMessagingList();
         foreach ($list as $value) {
             if(empty($value['line_id'])){
+
+                $mail_message = "\n\n\n上記のスケージュールに参加できる場合\nhttps://waldorf-classics.herokuapp.com/apps/join.php?id=".$value['id']."\n\n参加できない場合\nhttps://waldorf-classics.herokuapp.com/apps/join.php?id=".$value['id'];
+
                 $from = new SendGrid\Email(null, "localhost.ko@gmail.com");
-                $subject = "Hello World from the SendGrid PHP Library!";
+                $subject = "Waldorf Classics Schedule のお知らせ";
                 $to = new SendGrid\Email(null, $value['email']);
-                $content = new SendGrid\Content("text/plain", $sen_msg);
+                $content = new SendGrid\Content("text/plain", $sen_msg.$mail_message);
                 $mail = new SendGrid\Mail($from, $subject, $to, $content);
 
                 $apiKey = getenv(SENDGRID_API_KEY);

@@ -30,7 +30,7 @@ $prof = $user->getUser($_SESSION['id']);
         </div>
         <div class="line">
             <p class="title">LINE を利用する</p>
-                <p class="line-code">承認コード：<?php if(!empty($value['line_code'])){echo h($value['line_code']); } ?></p>
+                <p class="line-code">承認コード：<?php if(!empty($value['line_code'])){echo h($value['line_code']); }else{echo '承認済み';} ?></p>
                 <p class="line-btn"><a href="https://line.me/R/ti/p/%40qyf6351f"><img height="40" border="0" alt="友だち追加" src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png"></a></p>
         </div>
     </div>

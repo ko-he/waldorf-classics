@@ -29,13 +29,15 @@
                 }
                 var n = 0;
                 $('.menu').on('click', function () {
-                    if(n=0){
+                    if(n == 0){
                         $('nav').show();
                         $('nav').css({
                             top: $('header').height() + 5
                         });
+                        n = 1;
                     }else{
                         $('nav').hide();
+                        n = 0;
                     }
                 });
             });

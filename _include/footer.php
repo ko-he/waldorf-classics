@@ -26,8 +26,18 @@
                             $(data).appendTo($('.ajax-box'));
                         }
                     });
-
                 }
+                var n = 0;
+                $('.menu').on('click', function () {
+                    if(n=0){
+                        $('nav').show();
+                        $('nav').css({
+                            top: $('header').height() + 5;
+                        });
+                    }else{
+                        $('nav').hide();
+                    }
+                });
             });
         </script>
     </body>

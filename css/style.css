@@ -37,10 +37,12 @@ header {
 }
 
 nav{
+  display: none;
   position: absolute;
   right: 0;
   width: 100%;
   max-width: 400px;
+  background: rgba(255, 255, 255, 0.7);
 }
 
 nav ul{

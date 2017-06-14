@@ -32,7 +32,7 @@
                     if(n=0){
                         $('nav').show();
                         $('nav').css({
-                            top: $('header').height() + 5;
+                            top: $('header').height() + 5
                         });
                     }else{
                         $('nav').hide();

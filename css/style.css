@@ -33,6 +33,38 @@ body {
 header {
   border-bottom: solid 2px #00203e;
   padding: 10px 20px;
+  position: relative;
+}
+
+nav{
+  position: absolute;
+  right: 0;
+  width: 100%;
+  max-width: 400px;
+}
+
+nav ul{
+  width: 100%;
+  overflow: hidden;
+  padding: 7px 0;
+}
+
+nav ul li{
+  width: 49.5%;
+  float: left;
+}
+
+nav ul li+li{
+  border-left: solid 1px #00203e;
+}
+
+nav ul li a{
+  display: block;
+  text-align: center;
+}
+
+nav ul li a img{
+  width: 50px;
 }
 
 .content {

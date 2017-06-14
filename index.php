@@ -16,6 +16,12 @@ $schedules = $schedule->getSchedules();
 <?php require '_include/header.php'; ?>
                 <h1>Woldorf Classics</h1>
                 <p class="menu"><img src="images/menu.png" alt=""></p>
+                <nav>
+                    <ul>
+                        <li><a href="mypage.php"><img src="images/mypage.png" alt=""></a></li>
+                        <li><a href="apps/logout.php"><img src="images/logout.png" alt=""></a></li>
+                    </ul>
+                </nav>
             </header>
             <div class="content">
                 <div class="top">

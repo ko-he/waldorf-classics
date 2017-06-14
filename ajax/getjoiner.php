@@ -20,10 +20,10 @@ $un_joiners = $joiner->getUnJoiner($_POST['scId']);
 <p class="label">参加でないメンバー</p>
 <ul class="unjoin">
     <?php foreach($un_joiners as $value): ?>
-        <li><img src="<?php echo h($img_url); ?>" alt=""><span class="name"><?php echo h($value['name']); ?></span></li>
+        <li><img src="<?php echo h($joiner->getProfImg($value['line_id'])); ?>" alt=""><span class="name"><?php echo h($value['name']); ?></span></li>
     <?php endforeach; ?>
 </ul>
-<?php if($joine_flug): ?>
+<?php if($join_flug): ?>
     <p class="wide-btn"><a href="">欠席にする</a></p>
 <?php else: ?>
     <p class="wide-btn"><a href="">参加にする</a></p>

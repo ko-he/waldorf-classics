@@ -30,7 +30,7 @@ if(!empty($_POST)){
     <?php $file_path = '../'; ?>
     <?php require '../_include/header.php'; ?>
             <h1>Waldorf Classics</h1>
-            <p class="menu"><a href="register.php"><img src="images/register.png" alt=""></a></p>
+            <p class="menu"><a href="register.php"><img src="../images/register.png" alt=""></a></p>
         </header>
         <div class="content">
             <form action="" method="post">

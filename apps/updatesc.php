@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../Joiner.class.php';
+require '../class/Joiner.class.php';
 
 $joiner = new Joiner();
 

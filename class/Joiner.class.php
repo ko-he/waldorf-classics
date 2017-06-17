@@ -20,7 +20,7 @@ class Joiner
 
     }
 
-    public function updateJoin($status, $sc_id, $id);
+    public function updateJoin($status, $sc_id, $id)
     {
         $sql = 'UPDATE joiners SET can_joine=:status WHERE sc_id=:sc_id AND user_id=:id';
         $data = array(
@@ -30,7 +30,7 @@ class Joiner
         );
         $this->db->queryPost($sql, $data);
     }
-    public function mailjoin($id, $sc_id);
+    public function mailjoin($id, $sc_id)
     {
         $sql = 'INSERT INTO joiners (can_joine, sc_id, id) VALUES (1, :sc_id, :id)';
         $data = array(
@@ -39,7 +39,7 @@ class Joiner
         );
         $this->db->queryPost($sql, $data);
     }
-    public function mailunjoin($id, $sc_id);
+    public function mailunjoin($id, $sc_id)
     {
         $sql = 'INSERT INTO joiners (can_joine, sc_id, id) VALUES (2, :sc_id, :id)';
         $data = array(

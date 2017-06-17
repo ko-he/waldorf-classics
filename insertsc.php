@@ -30,7 +30,7 @@ if(!empty($_POST)){
         foreach ($list as $value) {
             if(empty($value['line_id'])){
 
-                $mail_message = "\n\n\n上記のスケージュールに参加できる場合\nhttps://waldorf-classics.herokuapp.com/apps/join.php?id=".$value['id']."\n\n参加できない場合\nhttps://waldorf-classics.herokuapp.com/apps/join.php?id=".$value['id'];
+                $mail_message = "\n\n\n上記のスケージュールに参加できる場合\nhttps://waldorf-classics.herokuapp.com/apps/mailjoin.php?id=".$value['id']."\n\n参加できない場合\nhttps://waldorf-classics.herokuapp.com/apps/mailunjoin.php?id=".$value['id'];
 
                 $from = new SendGrid\Email(null, "localhost.ko@gmail.com");
                 $subject = "Waldorf Classics Schedule のお知らせ";

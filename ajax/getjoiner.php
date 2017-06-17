@@ -23,8 +23,8 @@ $un_joiners = $joiner->getUnJoiner($_POST['scId']);
         <li><img src="<?php echo h($joiner->getProfImg($value['line_id'])); ?>" alt=""><span class="name"><?php echo h($value['name']); ?></span></li>
     <?php endforeach; ?>
 </ul>
-<?php if($join_flug): ?>
-    <p class="wide-btn"><a href="">欠席にする</a></p>
+<?php if(!empty($join_flug)): ?>
+    <p class="wide-btn"><a href="https://waldorf-classics.herokuapp.com/apps/updatesc.php?sc_id=<?php echo h($_POST['scId']); ?>&status=2">欠席にする</a></p>
 <?php else: ?>
-    <p class="wide-btn"><a href="">参加にする</a></p>
+    <p class="wide-btn"><a href="https://waldorf-classics.herokuapp.com/apps/updatesc.php?sc_id=<?php echo h($_POST['scId']); ?>&status=1">参加にする</a></p>
 <?php endif; ?>

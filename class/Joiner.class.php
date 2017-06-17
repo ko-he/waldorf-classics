@@ -20,6 +20,35 @@ class Joiner
 
     }
 
+    public function updateJoin($status, $sc_id, $id);
+    {
+        $sql = 'UPDATE joiners SET can_joine=:status WHERE sc_id=:sc_id AND user_id=:id';
+        $data = array(
+            ':status' => $status,
+            ':sc_id' => $sc_id,
+            ':id' => $id
+        );
+        $this->db->queryPost($sql, $data);
+    }
+    public function mailjoin($id, $sc_id);
+    {
+        $sql = 'INSERT INTO joiners (can_joine, sc_id, id) VALUES (1, :sc_id, :id)';
+        $data = array(
+            ':sc_id' => $sc_id,
+            ':id' => $id
+        );
+        $this->db->queryPost($sql, $data);
+    }
+    public function mailunjoin($id, $sc_id);
+    {
+        $sql = 'INSERT INTO joiners (can_joine, sc_id, id) VALUES (2, :sc_id, :id)';
+        $data = array(
+            ':sc_id' => $sc_id,
+            ':id' => $id
+        );
+        $this->db->queryPost($sql, $data);
+    }
+
     public function getProfImg($line_id)
     {
         //line user id から profile を取得

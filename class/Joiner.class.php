@@ -22,7 +22,7 @@ class Joiner
 
     public function updateJoin($status, $sc_id, $id)
     {
-        $sql = 'UPDATE joiners SET can_joine=:status WHERE sc_id=:sc_id AND user_id=:id';
+        $sql = 'UPDATE joiners SET can_join=:status WHERE sc_id=:sc_id AND user_id=:id';
         $data = array(
             ':status' => $status,
             ':sc_id' => $sc_id,

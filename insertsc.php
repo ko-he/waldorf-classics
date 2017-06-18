@@ -11,6 +11,8 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => '
 35cfb80864e3be2e8c3377689e7dd3a7']);
 
 $schedule = new Schedule();
+$schedules = $schedule->getSchedules();
+
 if(!empty($_POST)){
     $schedule->validRequired($_POST['sc_date'], 'sc_date');
     $schedule->validRequired($_POST['place'], 'place');
@@ -71,6 +73,26 @@ print_r($schedules->err_msg);
             <h1>Waldorf Classics</h1>
         </header>
         <div class="content">
+            <ul class="schedules">
+                <?php foreach($schedules as $value): ?>
+                    <?php if($value['sc_type'] == 1): ?>
+                        <li class="schedule practise" data-sc-id="<?php echo h($value['id']); ?>">
+                            <p class="date"><?php echo h(dateformat($value['sc_date'])); ?></p>
+                            <p class="time">時間：<span><?php echo h($value['start_time']); ?></span>~<span ><?php echo h($value['finish_time']); ?></span></p>
+                            <p class="place">場所：<?php echo h($value['place']); ?></p>
+                            <p class="label">練習</p>
+                            <p class="menu"><span>変更</span><a href="">削除</a></p>
+                        </li>
+                    <?php else: ?>
+                        <li class="schedule match" data-sc-id="<?php echo h($value['id']); ?>">
+                            <p class="date"><?php echo h(dateformat($value['sc_date'])); ?></p>
+                            <p class="time">時間：<span><?php echo h($value['start_time']); ?></span>~</p>
+                            <p class="place">場所：<?php echo h($value['place']); ?></p>
+                            <p class="label">試合</p>
+                        </li>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </ul>
              <form action="" method="post">
                  <p><select class="" name="sc_type">
                      <option value="1">練習</option>

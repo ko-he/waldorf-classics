@@ -70,7 +70,7 @@ class Joiner
                 $img_url = $profile['pictureUrl'];
             }
         }else{
-            $img_url = 'images/prof.jpg';
+            $img_url = 'images/prof.png';
         }
         return $img_url;
     }

@@ -14,7 +14,7 @@ $un_joiners = $joiner->getUnJoiner($_POST['scId']);
 <ul class="join">
     <?php foreach($joiners as $value): ?>
         <?php if($_SESSION['id'] == $value['user_id']) $join_flug = true; ?>
-        <li><img src="<?php echo h($joiner->getProfImg($value['line_id'])); ?>" alt=""><span class="name"><?php echo h($value['name']); ?></span></li>
+        <li><img src="<?php echo h($joiner->getProfImg($value['line_id'])); ?>" alt=""><span class="name"><?php echo h($value['user_id']); ?></span></li>
     <?php endforeach; ?>
 </ul>
 <p class="label">参加でないメンバー</p>

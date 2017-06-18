@@ -22,7 +22,18 @@ class Joiner
 
     public function updateJoin($status, $sc_id, $id)
     {
-        $sql = 'UPDATE joiners SET can_join=:status WHERE sc_id=:sc_id AND user_id=:id';
+        $sql = 'SELECT * FROM joiners WHERE sc_id=:sc_id AND user_id=:id';
+        $data = array(
+            ':sc_id' => $sc_id,
+            ':id' => $id
+        );
+        $recode = $this->db->queryPost($sql, $data);
+        $row = $this->db->dbFetch($recode);
+        if(!empty($row)){
+            $sql = 'UPDATE joiners SET can_join=:status WHERE sc_id=:sc_id AND user_id=:id';
+        }else{
+            $sql = 'INSERT INTO joiners (can_join, sc_id, user_id, created_at, updated_at) VALUES (:status, :sc_id, :user_id, NOW(), NOW())';
+        }
         $data = array(
             ':status' => $status,
             ':sc_id' => $sc_id,

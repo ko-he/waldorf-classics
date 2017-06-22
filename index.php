@@ -65,14 +65,6 @@ $schedules = $schedule->getSchedules();
                         <?php endif; ?>
                     <?php endforeach; ?>
                 </ul>
-                <div class="popup-wrap">
-                    <div class="popup">
-                        <div class="ajax-box">
-
-                        </div>
-                        <span class="close">✖</span>
-                    </div>
-                </div>
-                <p><a href="insertsc.php">スケージュール登録</a></p>
+                <p class="root"><a href="insertsc.php">スケージュール登録</a></p>
             </div>
 <?php require '_include/footer.php'; ?>

@@ -22,14 +22,14 @@ if(!empty($_POST)){
         }else{
             $type = '試合・大会';
         }
-        $sen_msg = dateformat($_POST['sc_date'])."\n".timeFormat($_POST['start_time'])."~".timeFormat($_POST['finish_time'])."\n\n上記の日時で".$type."を行います。\n\n参加頂ける方はお願いします。";
+        $sen_msg = dateformat($_POST['sc_date'])."\n".timeFormat($_POST['start_time'])."~".timeFormat($_POST['finish_time'])."\n場所：".$_POST['place']."\n\n上記の日時で".$type."を行います。\n\n参加頂ける方はお願いします。";
         $row = $schedule->insertSchedule($_POST['sc_type'], $_POST['description'], $_POST['place'], $_POST['sc_date'], $_POST['start_time'], $_POST['finish_time']);
 
         $list = $schedule->getMessagingList();
         foreach ($list as $value) {
             if(empty($value['line_id'])){
 
-                $mail_message = "\n\n\n上記のスケージュールに参加できる場合\nhttps://waldorf-classics.herokuapp.com/apps/mailjoin.php?id=".$value['id']."\n\n参加できない場合\nhttps://waldorf-classics.herokuapp.com/apps/mailunjoin.php?id=".$value['id'];
+                $mail_message = "\n\n\n上記のスケージュールに参加できる場合\nhttps://waldorf-classics.herokuapp.com/apps/mailjoin.php?id=".$value['id']."&sc_id".$row['id']."\n\n参加できない場合\nhttps://waldorf-classics.herokuapp.com/apps/mailunjoin.php?id=".$value['id']."&sc_id".$row['id'];
 
                 $from = new SendGrid\Email(null, "localhost.ko@gmail.com");
                 $subject = "Waldorf Classics Schedule のお知らせ";

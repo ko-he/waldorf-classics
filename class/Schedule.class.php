@@ -29,7 +29,7 @@ class Schedule extends Validate
         $sql2 = 'SELECT * FROM schedules ORDER BY id DESC LIMIT 1';
         $recode = $this->db->queryPost($sql2, array());
         $row = $this->db->dbFetch($recode);
-        return $row;
+        return $row[0];
     }
     public function getMessagingList()
     {

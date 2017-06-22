@@ -11,6 +11,14 @@ function csrfSetToken(){
     return $token;
 }
 
+function timeFormat($time){
+    if(!empty($time)){
+        return substr($time, 0, 5);
+    }else{
+        return '未定';
+    }
+}
+
 function csrfCheckToken($value){
     if(empty($_SESSION['token']) || $_SESSION['token'] != $value){
         echo h('不正なポスト送信がありました');

@@ -81,7 +81,7 @@ print_r($schedules->err_msg);
                             <p class="time">時間：<span><?php echo h($value['start_time']); ?></span>~<span ><?php echo h($value['finish_time']); ?></span></p>
                             <p class="place">場所：<?php echo h($value['place']); ?></p>
                             <p class="label">練習</p>
-                            <p class="menu"><span>変更</span><a href="">削除</a></p>
+                            <p class="menu"><span>編集</span><a href="#" onclick="confirm('このデータを削除してもよろしいですか？');">削除</a></p>
                         </li>
                     <?php else: ?>
                         <li class="schedule match" data-sc-id="<?php echo h($value['id']); ?>">

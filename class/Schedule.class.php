@@ -59,4 +59,10 @@ class Schedule extends Validate
         $row = $this->db->dbFetch($recode);
         return $row[0];
     }
+    public function deleteSc($id)
+    {
+        $sql = 'DELETE FROM schedules WHERE id=:id';
+        $data = array(':id' => $id);
+        $this->db->queryPost($sql, $data);
+    }
 }

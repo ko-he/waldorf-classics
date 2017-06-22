@@ -15,9 +15,6 @@ $schedules = $schedule->getSchedules();
 
 if(!empty($_POST)){
     $schedule->validRequired($_POST['sc_date'], 'sc_date');
-    $schedule->validRequired($_POST['place'], 'place');
-    $schedule->validRequired($_POST['start_time'], 'start_time');
-    $schedule->validRequired($_POST['finish_time'], 'finish_time');
 
     if(empty($schedule->err_msg)){
         if($_POST['sc_type'] == 1){
@@ -25,7 +22,7 @@ if(!empty($_POST)){
         }else{
             $type = '試合・大会';
         }
-        $sen_msg = dateformat($_POST['sc_date'])."\n".substr($_POST['start_time'], 0, 5)."~".substr($_POST['finish_time'], 0, 5)."\n\n上記の日時で".$type."を行います。\n\n参加頂ける方はお願いします。";
+        $sen_msg = dateformat($_POST['sc_date'])."\n".timeFormat($_POST['start_time'])."~".timeFormat($_POST['finish_time'])."\n\n上記の日時で".$type."を行います。\n\n参加頂ける方はお願いします。";
         $row = $schedule->insertSchedule($_POST['sc_type'], $_POST['description'], $_POST['place'], $_POST['sc_date'], $_POST['start_time'], $_POST['finish_time']);
 
         $list = $schedule->getMessagingList();
@@ -65,9 +62,6 @@ if(!empty($_POST)){
     }
 }
 
-
-print_r($schedules->err_msg);
-
  ?>
     <?php require '_include/header.php'; ?>
             <h1>Waldorf Classics</h1>
@@ -81,7 +75,7 @@ print_r($schedules->err_msg);
                             <p class="time">時間：<span><?php echo h(timeFormat($value['start_time'])); ?></span>~<span ><?php echo h(timeFormat($value['finish_time'])); ?></span></p>
                             <p class="place">場所：<?php echo h($value['place']); ?></p>
                             <p class="label">練習</p>
-                            <p class="menu"><span>編集</span><a href="#" onclick="confirm('このデータを削除してもよろしいですか？');">削除</a></p>
+                                <p class="menu"><span class="sc-edit" data-sc-id="<?php echo h($value['id']); ?>">編集</span><a href="apps/deletesc.php?id=<?php echo h($value['id']); ?>" onclick="confirm('このデータを削除してもよろしいですか？');">削除</a></p>
                         </li>
                     <?php else: ?>
                         <li class="schedule match" data-sc-id="<?php echo h($value['id']); ?>">
@@ -89,7 +83,7 @@ print_r($schedules->err_msg);
                             <p class="time">時間：<span><?php echo h(timeFormat($value['start_time'])); ?></span>~</p>
                             <p class="place">場所：<?php echo h($value['place']); ?></p>
                             <p class="label">試合</p>
-                            <p class="menu"><span>編集</span><a href="#" onclick="confirm('このデータを削除してもよろしいですか？');">削除</a></p>
+                            <p class="menu"><span class="sc-edit" data-sc-id="<?php echo h($value['id']); ?>">編集</span><a href="apps/deletesc.php?id=<?php echo h($value['id']); ?>" onclick="confirm('このデータを削除してもよろしいですか？');">削除</a></p>
                         </li>
                     <?php endif; ?>
                 <?php endforeach; ?>

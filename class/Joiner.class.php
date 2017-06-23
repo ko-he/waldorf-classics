@@ -43,7 +43,7 @@ class Joiner
     }
     public function mailjoin($id, $sc_id)
     {
-        $sql = 'INSERT INTO joiners (can_join, sc_id, user_id) VALUES (1, :sc_id, :id)';
+        $sql = 'INSERT INTO joiners (can_join, sc_id, user_id, created_at, updated_at) VALUES (1, :sc_id, :id, NOW(), NOW())';
         $data = array(
             ':sc_id' => $sc_id,
             ':id' => $id
@@ -52,7 +52,7 @@ class Joiner
     }
     public function mailunjoin($id, $sc_id)
     {
-        $sql = 'INSERT INTO joiners (can_join, sc_id, user_id) VALUES (2, :sc_id, :id)';
+        $sql = 'INSERT INTO joiners (can_join, sc_id, user_id, created_at, updated_at) VALUES (2, :sc_id, :id, NOW(), NOW())';
         $data = array(
             ':sc_id' => $sc_id,
             ':id' => $id

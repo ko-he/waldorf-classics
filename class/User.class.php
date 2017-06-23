@@ -71,7 +71,7 @@ class User extends Validate{
         }else{
             $code = sha1(uniqid(mt_rand(), true));
 
-            $sql = 'UPDATE users (reset_code) values (:code) WHERE id=:id';
+            $sql = 'UPDATE users SET reset_code=:code WHERE id=:id';
             $data = array(
                 ':code' => $code,
                 ':id' => $row[0]['id']

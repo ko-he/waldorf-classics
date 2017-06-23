@@ -1,0 +1,40 @@
+<?php
+ob_start();
+session_start();
+require_once('../class/User.class.php');
+require_once('../function.php');
+
+
+if(!empty($_POST)){
+
+    //user class インスタンス生成
+    $user = new User();
+
+    //入力チャック
+    $user->validRequired($_POST['email'], 'email');
+
+    if(empty($user->err_msg)){
+
+        //login チェック
+        $user->forgetPassword($_POST['email'], 'email');
+
+        if(empty($user->err_msg)){
+
+            header('location: https://waldorf-classics.herokuapp.com');
+        }
+    }
+}
+?>
+    <?php $file_path = '../'; ?>
+    <?php require '../_include/header.php'; ?>
+            <h1>Waldorf Classics</h1>
+            <p class="menu"><a href="register.php"><img src="../images/register.png" alt=""></a></p>
+        </header>
+        <div class="content">
+            <form action="" method="post">
+                <p><span class="error"><?php if(!empty($user->err_msg['email'])) echo h($user->err_msg['email']); ?></span>
+                <input type="text" name="email" value="<?php if(!empty($_POST['email'])) echo h($_POST['email']); ?>" placeholder="E-mail"></p>
+                <p class="submit"><input type="submit" value="Login"></p>
+            </form>
+         </div>
+     <?php require '../_include/footer.php'; ?>

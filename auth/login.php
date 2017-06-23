@@ -38,7 +38,7 @@ if(!empty($_POST)){
                 <input type="text" name="email" value="<?php if(!empty($_POST['email'])) echo h($_POST['email']); ?>" placeholder="E-mail"></p>
                 <p><span class="error"><?php if(!empty($user->err_msg['password'])) echo h($user->err_msg['password']); ?></span>
                 <input type="password" name="password" value="<?php if(!empty($_POST['password'])) echo h($_POST['password']); ?>" placeholder="Password"></p>
-                <p class="link"><a href="" onclick="alert('LINE をご利用の場合はトーク画面から [password change] と入力するとパスワード変更画面のURLをお知らせします。');">Forgot Passwrd?</a></p>
+                <p class="link"><a href="lostpassword.php" onclick="alert('LINE をご利用の場合はトーク画面から [password change] と入力するとパスワード変更画面のURLをお知らせします。');">Forgot Passwrd?</a></p>
                 <p class="submit"><input type="submit" value="Login"></p>
             </form>
          </div>

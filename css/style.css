@@ -121,7 +121,9 @@ form .submit input[type="submit"]:hover {
   background: none;
   color: #227fd5;
 }
-
+.error{
+  color: #f00;
+}
 .top {
   text-align: center;
 }

@@ -3,7 +3,7 @@ session_start();
 // 定義関数の読み込み
 require '../function.php';
 
-require '../class/Joiner.class.php';
+require '../class/Schedule.class.php';
 $schedule = new Schedule();
 
 $edit_schedule = $schedule->getEditSchedule($_POST['scId']);

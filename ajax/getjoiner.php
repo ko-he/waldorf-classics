@@ -6,10 +6,15 @@ require '../function.php';
 require '../class/Joiner.class.php';
 $joiner = new Joiner();
 
+require '../class/Schedule.class.php';
+$schedule = new Schedule();
+
+$edit_schedule = $schedule->getEditSchedule($_POST['scId']);
+
 $joiners = $joiner->getJoiner($_POST['scId']);
 $un_joiners = $joiner->getUnJoiner($_POST['scId']);
 ?>
-<p class="date"></p>
+<p class="date"><?php echo h(dateformat($edit_schedule['sc_date'])); ?></p>
 <p class="label">参加できるメンバー</p>
 <ul class="join">
     <?php foreach($joiners as $value): ?>

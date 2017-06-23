@@ -17,46 +17,50 @@ if(!empty($_POST)){
     $schedule->validRequired($_POST['sc_date'], 'sc_date');
 
     if(empty($schedule->err_msg)){
-        if($_POST['sc_type'] == 1){
-            $type = '練習';
+        if(!empty($_POST['sc_id'])){
+            $schedule->updateSchedule($_POST['sc_type'], $_POST['description'], $_POST['place'], $_POST['sc_date'], $_POST['start_time'], $_POST['finish_time'], $_POST['sc_id']);
         }else{
-            $type = '試合・大会';
-        }
-        $sen_msg = dateformat($_POST['sc_date'])."\n".timeFormat($_POST['start_time'])."~".timeFormat($_POST['finish_time'])."\n場所：".$_POST['place']."\n\n上記の日時で".$type."を行います。\n\n参加頂ける方はお願いします。";
-        $row = $schedule->insertSchedule($_POST['sc_type'], $_POST['description'], $_POST['place'], $_POST['sc_date'], $_POST['start_time'], $_POST['finish_time']);
-
-        $list = $schedule->getMessagingList();
-        foreach ($list as $value) {
-            if(empty($value['line_id'])){
-
-                $mail_message = "\n\n\n上記のスケージュールに参加できる場合\nhttps://waldorf-classics.herokuapp.com/apps/mailjoin.php?id=".$value['id']."&sc_id".$row['id']."\n\n参加できない場合\nhttps://waldorf-classics.herokuapp.com/apps/mailunjoin.php?id=".$value['id']."&sc_id".$row['id'];
-
-                $from = new SendGrid\Email(null, "localhost.ko@gmail.com");
-                $subject = "Waldorf Classics Schedule のお知らせ";
-                $to = new SendGrid\Email(null, $value['email']);
-                $content = new SendGrid\Content("text/plain", $sen_msg.$mail_message);
-                $mail = new SendGrid\Mail($from, $subject, $to, $content);
-
-                $apiKey = getenv(SENDGRID_API_KEY);
-                $sg = new \SendGrid($apiKey);
-
-                $response = $sg->client->mail()->send()->post($mail);
-
+            if($_POST['sc_type'] == 1){
+                $type = '練習';
             }else{
-                $text = $sen_msg;
-                $yes_post = new LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder('YES', 'sc_y:'.$row[0]['id']);
-                $no_post = new LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder('NO', 'sc_n:'.$row[0]['id']);
-                // Confirmテンプレート
-                $confirm = new LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder('上記のスケジュールに参加できますか？', [$yes_post, $no_post]);
-                // メッセージを作る
-                $confirm_message = new LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('Waldorf Classics Schedule', $confirm);
-                $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text);
-                // push
-                $message = new LINE\LINEBot\MessageBuilder\MultiMessageBuilder();
-                $message->add($textMessageBuilder);
-                $message->add($confirm_message);
-                $response = $bot->pushMessage($value['line_id'], $message);
+                $type = '試合・大会';
+            }
+            $sen_msg = dateformat($_POST['sc_date'])."\n".timeFormat($_POST['start_time'])."~".timeFormat($_POST['finish_time'])."\n場所：".$_POST['place']."\n\n上記の日時で".$type."を行います。\n\n参加頂ける方はお願いします。";
+            $row = $schedule->insertSchedule($_POST['sc_type'], $_POST['description'], $_POST['place'], $_POST['sc_date'], $_POST['start_time'], $_POST['finish_time']);
 
+            $list = $schedule->getMessagingList();
+            foreach ($list as $value) {
+                if(empty($value['line_id'])){
+
+                    $mail_message = "\n\n\n上記のスケージュールに参加できる場合\nhttps://waldorf-classics.herokuapp.com/apps/mailjoin.php?id=".$value['id']."&sc_id".$row['id']."\n\n参加できない場合\nhttps://waldorf-classics.herokuapp.com/apps/mailunjoin.php?id=".$value['id']."&sc_id".$row['id'];
+
+                    $from = new SendGrid\Email(null, "localhost.ko@gmail.com");
+                    $subject = "Waldorf Classics Schedule のお知らせ";
+                    $to = new SendGrid\Email(null, $value['email']);
+                    $content = new SendGrid\Content("text/plain", $sen_msg.$mail_message);
+                    $mail = new SendGrid\Mail($from, $subject, $to, $content);
+
+                    $apiKey = getenv(SENDGRID_API_KEY);
+                    $sg = new \SendGrid($apiKey);
+
+                    $response = $sg->client->mail()->send()->post($mail);
+
+                }else{
+                    $text = $sen_msg;
+                    $yes_post = new LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder('YES', 'sc_y:'.$row[0]['id']);
+                    $no_post = new LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder('NO', 'sc_n:'.$row[0]['id']);
+                    // Confirmテンプレート
+                    $confirm = new LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder('上記のスケジュールに参加できますか？', [$yes_post, $no_post]);
+                    // メッセージを作る
+                    $confirm_message = new LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('Waldorf Classics Schedule', $confirm);
+                    $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text);
+                    // push
+                    $message = new LINE\LINEBot\MessageBuilder\MultiMessageBuilder();
+                    $message->add($textMessageBuilder);
+                    $message->add($confirm_message);
+                    $response = $bot->pushMessage($value['line_id'], $message);
+
+                }
             }
         }
     }

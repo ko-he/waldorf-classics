@@ -9,7 +9,7 @@ $joiner = new Joiner();
 $joiners = $joiner->getJoiner($_POST['scId']);
 $un_joiners = $joiner->getUnJoiner($_POST['scId']);
 ?>
-<p class="date">06/11</p>
+<p class="date"></p>
 <p class="label">参加できるメンバー</p>
 <ul class="join">
     <?php foreach($joiners as $value): ?>

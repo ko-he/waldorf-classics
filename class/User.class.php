@@ -11,6 +11,7 @@ require_once('Validate.class.php');
 class User extends Validate{
 
     public $id;
+    public $code;
     private $db;
 
     public function __construct(){
@@ -77,7 +78,7 @@ class User extends Validate{
             );
             $this->db->queryPost($sql, $data);
 
-            //メール送信処理
+            $this->code = $code;
         }
     }
     public function checkCode($code){

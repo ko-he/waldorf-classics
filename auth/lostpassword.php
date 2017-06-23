@@ -19,8 +19,21 @@ if(!empty($_POST)){
         $user->forgetPassword($_POST['email'], 'email');
 
         if(empty($user->err_msg)){
+            $mail_message = "\n\n\n Password 変更URL\nhttps://waldorf-classics.herokuapp.com/auth/resetpassword.php?code=".$user->code;
 
-            header('location: https://waldorf-classics.herokuapp.com');
+            $from = new SendGrid\Email(null, "localhost.ko@gmail.com");
+            $subject = "Waldorf Classics Schedule のお知らせ";
+            $to = new SendGrid\Email(null, $_POST['email']);
+            $content = new SendGrid\Content("text/plain", $mail_message);
+            $mail = new SendGrid\Mail($from, $subject, $to, $content);
+
+            $apiKey = getenv(SENDGRID_API_KEY);
+            $sg = new \SendGrid($apiKey);
+
+            $response = $sg->client->mail()->send()->post($mail);
+
+
+            echo "<script>alert('パスワード変更画面への URL を記載したメール送信しましたのでご確認ください');<script>";
         }
     }
 }

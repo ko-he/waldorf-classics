@@ -12,7 +12,7 @@ function csrfSetToken(){
 }
 
 function timeFormat($time){
-    if($time != '00:00:00'){
+    if($time != '00:00:00' || $time != '00:00'){
         return substr($time, 0, 5);
     }else{
         return '未定';

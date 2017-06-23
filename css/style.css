@@ -101,6 +101,9 @@ form p input[type="text"], form p input[type="password"], form p input[type="dat
   font-style: italic;
   outline: none;
 }
+form .link {
+  text-align: right;
+}
 form .submit {
   text-align: center;
 }

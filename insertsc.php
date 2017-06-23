@@ -34,7 +34,7 @@ if(!empty($_POST)){
             foreach ($list as $value) {
                 if(empty($value['line_id'])){
 
-                    $mail_message = "\n\n\n上記のスケージュールに参加できる場合\nhttps://waldorf-classics.herokuapp.com/apps/mailjoin.php?id=".$value['id']."&sc_id".$row['id']."\n\n参加できない場合\nhttps://waldorf-classics.herokuapp.com/apps/mailunjoin.php?id=".$value['id']."&sc_id".$row['id'];
+                    $mail_message = "\n\n\n上記のスケージュールに参加できる場合\nhttps://waldorf-classics.herokuapp.com/apps/mailjoin.php?id=".$value['id']."&sc_id=".$row['id']."\n\n参加できない場合\nhttps://waldorf-classics.herokuapp.com/apps/mailunjoin.php?id=".$value['id']."&sc_id=".$row['id'];
 
                     $from = new SendGrid\Email(null, "localhost.ko@gmail.com");
                     $subject = "Waldorf Classics Schedule のお知らせ";
@@ -101,8 +101,11 @@ if(!empty($_POST)){
                  </select></p>
                  <p><input type="text" name="description" value="" placeholder="大会名など"></p>
                  <p><input type="text" name="place" value="" placeholder="場所"></p>
+                 <span class="error"><?php if(!empty($schedule->err_msg['sc_date'])) echo h($schedule->err_msg['sc_date'])?></span>
                  <p><input type="date" name="sc_date" value=""></p>
+                 <span class="error"><?php if(!empty($schedule->err_msg['start_time'])) echo h($schedule->err_msg['start_time'])?></span>
                  <p><input type="time" name="start_time" value=""><label for="">開始時間または集合時間（未定の場合は 【00:00】と入力)</label></p>
+                 <span class="error"><?php if(!empty($schedule->err_msg['finish_time'])) echo h($schedule->err_msg['finish_time'])?></span>
                  <p><input type="time" name="finish_time" value=""><label for="">終了時間または解散時間（未定の場合は 【00:00】と入力)</label></p>
                  <p class="submit"><input type="submit" value="submit"></p>
              </form>

@@ -3,6 +3,7 @@ ob_start();
 session_start();
 require_once('../class/User.class.php');
 require_once('../function.php');
+require_once('../vendor/autoload.php');
 
 
 if(!empty($_POST)){

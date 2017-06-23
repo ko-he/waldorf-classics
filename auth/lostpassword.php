@@ -34,7 +34,7 @@ if(!empty($_POST)){
             $response = $sg->client->mail()->send()->post($mail);
 
 
-            echo "<script>alert('パスワード変更画面への URL を記載したメール送信しましたのでご確認ください');<script>";
+            echo "<script>alert('パスワード変更画面への URL を記載したメール送信しましたのでご確認ください');</script>";
         }
     }
 }
@@ -48,7 +48,7 @@ if(!empty($_POST)){
             <form action="" method="post">
                 <p><span class="error"><?php if(!empty($user->err_msg['email'])) echo h($user->err_msg['email']); ?></span>
                 <input type="text" name="email" value="<?php if(!empty($_POST['email'])) echo h($_POST['email']); ?>" placeholder="E-mail"></p>
-                <p class="submit"><input type="submit" value="Login"></p>
+                <p class="submit"><input type="submit" value="Submit"></p>
             </form>
          </div>
      <?php require '../_include/footer.php'; ?>

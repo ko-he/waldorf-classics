@@ -81,14 +81,14 @@ class User extends Validate{
             $this->code = $code;
         }
     }
-    public function checkCode($code){
+    public function checkCode($code, $key){
         $sql = 'SELECT * FROM users WHERE resert_code=:code';
         $data = array(':code' => $code);
 
         $recode = $this->db->queryPost($sql, $data);
         $row = $this->db->dbFetch($recode);
         if(empty($row)){
-            $this->err_msg['code'] = 'リセットコードが不正です';
+            $this->err_msg['key'] = 'リセットコードが不正です';
         }else{
             $this->id = $row[0]['id'];
         }
@@ -96,7 +96,7 @@ class User extends Validate{
     public function resetPassword($password){
         $sql = 'UPDATE users SET password=:password WHERE id=:id';
         $data = array(
-            ':password' => password_hash($password),
+            ':password' => password_hash($password, PASSWORD_DEFAULT),
             ':id' => $this->id
         );
         $this->db->queryPost($sql, $data);

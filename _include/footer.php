@@ -47,7 +47,7 @@
                             scId: scid
                         },
                         success: function (data) {
-                            $(data).appendTo($('.form'));
+                            $('form').html($(data));
                         }
                     });
                 }

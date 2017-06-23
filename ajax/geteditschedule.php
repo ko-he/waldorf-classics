@@ -15,7 +15,7 @@ $edit_schedule = $schedule->getEditSchedule($_POST['scId']);
 <p><input type="text" name="description" value="<?php echo h($edit_schedule['description']); ?>" placeholder="大会名など"></p>
 <p><input type="text" name="place" value="<?php echo h($edit_schedule['place']); ?>" placeholder="場所"></p>
 <p><input type="date" name="sc_date" value="<?php echo h($edit_schedule['sc_date']); ?>"></p>
-<p><input type="time" name="start_time" value="<?php echo h($edit_schedule['start_time']); ?>"></p>
-<p><input type="time" name="finish_time" value="<?php echo h($edit_schedule['finish_time']); ?>"></p>
+<p><input type="time" name="start_time" value="<?php echo h($edit_schedule['start_time']); ?>"><label for="">開始時間または集合時間（未定の場合は 【00:00】と入力)</label></p>
+<p><input type="time" name="finish_time" value="<?php echo h($edit_schedule['finish_time']); ?>"><label for="">終了時間または解散時間（未定の場合は 【00:00】と入力)</label></p>
 <input type="hidden" name="sc_id" value="<?php echo h($edit_schedule['id']); ?>">
 <p class="submit"><input type="submit" value="submit"></p>

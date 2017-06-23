@@ -75,7 +75,7 @@ class Schedule extends Validate
     }
     public function updateSchedule($sc_type, $description, $place, $sc_date, $start_time, $finish_time, $id)
     {
-        $sql = 'UPDATE schedules SET sc_type=:sc_type, description=:description, place=:place, sc_date=:sc_date, start_time=:starttime, finish_time=:finish_time WHERE id=:id';
+        $sql = 'UPDATE schedules SET sc_type=:sc_type, description=:description, place=:place, sc_date=:sc_date, start_time=:start_time, finish_time=:finish_time WHERE id=:id';
         $data = array(
             ':sc_type' => $sc_type,
             ':description' => $description,

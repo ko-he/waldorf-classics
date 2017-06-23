@@ -74,7 +74,7 @@ if(!empty($_POST)){
             <ul class="schedules">
                 <?php foreach($schedules as $value): ?>
                     <?php if($value['sc_type'] == 1): ?>
-                        <li class="schedule practise" data-sc-id="<?php echo h($value['id']); ?>">
+                        <li class="sc practise" data-sc-id="<?php echo h($value['id']); ?>">
                             <p class="date"><?php echo h(dateformat($value['sc_date'])); ?></p>
                             <p class="time">時間：<span><?php echo h(timeFormat($value['start_time'])); ?></span>~<span ><?php echo h(timeFormat($value['finish_time'])); ?></span></p>
                             <p class="place">場所：<?php echo h($value['place']); ?></p>
@@ -82,7 +82,7 @@ if(!empty($_POST)){
                                 <p class="menu"><span class="sc-edit" data-sc-id="<?php echo h($value['id']); ?>">編集</span><a href="apps/deletesc.php?id=<?php echo h($value['id']); ?>" onclick="confirm('このデータを削除してもよろしいですか？');">削除</a></p>
                         </li>
                     <?php else: ?>
-                        <li class="schedule match" data-sc-id="<?php echo h($value['id']); ?>">
+                        <li class="sc match" data-sc-id="<?php echo h($value['id']); ?>">
                             <p class="date"><?php echo h(dateformat($value['sc_date'])); ?></p>
                             <p class="time">時間：<span><?php echo h(timeFormat($value['start_time'])); ?></span>~</p>
                             <p class="place">場所：<?php echo h($value['place']); ?></p>

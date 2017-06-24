@@ -82,7 +82,7 @@ class User extends Validate{
         }
     }
     public function checkCode($code, $key){
-        $sql = 'SELECT * FROM users WHERE resert_code=:code';
+        $sql = 'SELECT * FROM users WHERE reset_code=:code';
         $data = array(':code' => $code);
 
         $recode = $this->db->queryPost($sql, $data);

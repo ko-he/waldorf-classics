@@ -34,7 +34,7 @@ if(!empty($_POST)){
             $response = $sg->client->mail()->send()->post($mail);
 
 
-            echo "<script>alert('パスワード変更画面への URL を記載したメール送信しましたのでご確認ください');</script>";
+            echo "<script>alert('パスワード変更画面への URL を記載したメール送信しましたのでご確認ください(メールの送信には数分かかります)');</script>";
         }
     }
 }

@@ -44,9 +44,13 @@ if(!empty($_POST)){
         </header>
         <div class="content">
             <form action="" method="post">
-                <p><span class="error"><?php if(!empty($user->err_msg['password'])) echo h($user->err_msg['password']); ?></span><input type="password" name="password" value="<?php if(!empty($_POST['password'])) echo h($_POST['password']); ?>" placeholder="Password"></p>
-                <p><span class="error"><?php if(!empty($user->err_msg['password_retype'])) echo h($user->err_msg['password_retype']); ?></span><input type="password" name="password_retype" value="<?php if(!empty($_POST['password_retype'])) echo h($_POST['password_retype']); ?>" placeholder="Password Again"></p>
-                <p class="submit"><input type="submit" value="Submit"></p>
+                <?php if(!empty($user->err_msg['code'])): ?>
+                    <p><span class="error"><?php echo h($user->err_msg['code']); ?></span></p>
+                <?php else: ?>
+                    <p><span class="error"><?php if(!empty($user->err_msg['password'])) echo h($user->err_msg['password']); ?></span><input type="password" name="password" value="<?php if(!empty($_POST['password'])) echo h($_POST['password']); ?>" placeholder="Password"></p>
+                    <p><span class="error"><?php if(!empty($user->err_msg['password_retype'])) echo h($user->err_msg['password_retype']); ?></span><input type="password" name="password_retype" value="<?php if(!empty($_POST['password_retype'])) echo h($_POST['password_retype']); ?>" placeholder="Password Again"></p>
+                    <p class="submit"><input type="submit" value="Submit"></p>
+                <?php endif; ?>
             </form>
          </div>
      <?php require '../_include/footer.php'; ?>

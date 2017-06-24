@@ -23,7 +23,7 @@ if(!empty($_POST)){
             $mail_message = "\n\n\n Password 変更URL\nhttps://waldorf-classics.herokuapp.com/auth/resetpassword.php?code=".$user->code;
 
             $from = new SendGrid\Email(null, "localhost.ko@gmail.com");
-            $subject = "Waldorf Classics Schedule のお知らせ";
+            $subject = "Waldorf Classics パスワード変更";
             $to = new SendGrid\Email(null, $_POST['email']);
             $content = new SendGrid\Content("text/plain", $mail_message);
             $mail = new SendGrid\Mail($from, $subject, $to, $content);

@@ -31,6 +31,8 @@ if(!empty($_POST)){
 
             if(empty($user->err_msg)){
                 $user->resetPassword($_POST['password']);
+
+                header('location: login.php');
             }
 
         }

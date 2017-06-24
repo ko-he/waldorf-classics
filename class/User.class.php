@@ -88,7 +88,7 @@ class User extends Validate{
         $recode = $this->db->queryPost($sql, $data);
         $row = $this->db->dbFetch($recode);
         if(empty($row)){
-            $this->err_msg['key'] = 'リセットコードが不正です';
+            $this->err_msg[$key] = 'リセットコードが不正です';
         }else{
             $this->id = $row[0]['id'];
         }
